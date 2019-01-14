@@ -240,9 +240,6 @@
       function clearMarkers() {
         setMapOnAll(null);
       }
-
-
-=======
     var mapCenter;
 
     function initMap() {
