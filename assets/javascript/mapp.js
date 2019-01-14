@@ -63,13 +63,9 @@
         directionsDisplay.setMap(map);
         geocoder = new google.maps.Geocoder();
         codeAddress($("#searchTest").val(),gatherDestinations);
-<<<<<<< HEAD
         setTimeout(createItinerary,1000);
         setTimeout(routeItinerary,2000);
-=======
-        setTimeout(createItinerary,3000);
-        setTimeout(routeItinerary,6000);
->>>>>>> 389956e6fdc8ec987e1f183bd0bbd9e994aa01c6
+
     });
 
     function codeAddress(location, callback) {
