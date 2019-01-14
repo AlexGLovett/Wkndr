@@ -47,19 +47,24 @@
         });
         directionsService = new google.maps.DirectionsService;
         directionsDisplay = new google.maps.DirectionsRenderer;
-        directionsDisplay.setMap(map);
 
     }
     $(document).on('click',"#searchTestBtn",function() {
+
+        //Reset search variables and itinerary
         $("#itineraryItems").empty();
+        initMap();
         parks = [];
         food = [];
         amusements = [];
+        waypnts = [];
+
         //Get the input zipcode and convert to lat/lng points for resetting map and search center
+        directionsDisplay.setMap(map);
         geocoder = new google.maps.Geocoder();
         codeAddress($("#searchTest").val(),gatherDestinations);
-        setTimeout(createItinerary,5000);
-        setTimeout(routeItinerary,10000);
+        setTimeout(createItinerary,1000);
+        setTimeout(routeItinerary,2000);
     });
 
     function codeAddress(location, callback) {
