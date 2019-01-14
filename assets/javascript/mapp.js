@@ -58,8 +58,8 @@
         //Get the input zipcode and convert to lat/lng points for resetting map and search center
         geocoder = new google.maps.Geocoder();
         codeAddress($("#searchTest").val(),gatherDestinations);
-        setTimeout(createItinerary,5000);
-        setTimeout(routeItinerary,10000);
+        setTimeout(createItinerary,3000);
+        setTimeout(routeItinerary,6000);
     });
 
     function codeAddress(location, callback) {
