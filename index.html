@@ -31,12 +31,17 @@
                     <div class="card">
                         <div class="card-image">
                             <img src="assets/images/map-placeholder.jpg">
-                            <div id="map"></div>
+                            <div id="map"></div><br>
+
                             <span class="card-title">Load Map Here</span>
                         </div>
                     <div class="card-content">
                         <p>I am a very simple card. I am good at containing small bits of information.
                         I am convenient because I require little markup to use effectively.</p>
+                        <form style="border:2px solid black">
+                            <input type="text" name="testSearch" id="searchTest">
+                        </form>
+                        <input type="button" name="submit" value="Search" id="searchTestBtn">
                     </div>
                     <div class="card-action">
                         <a href="#">This is a link</a>
@@ -51,9 +56,8 @@
             <div class="col s8 offset-s2">
                     <div class="card">
                         <div class="card-content">
-                            <span class="card-title">Put extra stuff here</span>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                            I am convenient because I require little markup to use effectively.</p>
+                            <span class="card-title">Itinerary</span>  
+                            <div id="itineraryItems"></div>
                         </div>
                         <div class="card-action">
                             <a href="#">This is a link</a>
@@ -99,9 +103,9 @@
     <!--frontend local js file-->
     <script src="assets/javascript/frontend.js"></script>
     <!--map logic js file-->
-    <script src="assets/javascript/mapp.js"></script>
+    <script async src="assets/javascript/mapp.js"></script>
     <!--Google Maps Javascript API + places API (async and defer allows browser to render page while API loads || callback=initMap runs function from mapp.js when api loaded-->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc37ceea-riBN1RsG5S-EX83UVoK-7W58&libraries=places"></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc37ceea-riBN1RsG5S-EX83UVoK-7W58&libraries=places&callback=initMap"></script>
 
 </body>
 </html>
