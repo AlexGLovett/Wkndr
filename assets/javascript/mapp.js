@@ -242,6 +242,47 @@
       }
 
 
+=======
+    var mapCenter;
+
+    function initMap() {
+    mapCenter = new google.maps.LatLng(	33.7490,-84.3880);
+    map = new google.maps.Map(document.getElementById('map'), {
+        center: mapCenter,
+        zoom: 10
+    });
+    }
+
+    $(document).on('click',"#searchTestBtn",function() {
+        // 0.000621371 miles =  1 meter
+        var searchTerm = $("#searchTest").val();
+        console.log(searchTerm);
+        var request = {
+            location: mapCenter,
+            radius: '160934',
+            type: [searchTerm]
+        };
+        
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+    });
+
+    function callback(results, status) {
+        if (status == google.maps.places.PlacesServiceStatus.OK) {
+            console.log("check");
+            for (var i = 0; i < results.length; i++) {
+                    //var coords = results.features[i].geometry.coordinates;
+                    var lat = results[i].geometry.location.lat();
+                    var long = results[i].geometry.location.lng();
+                    var latLng = new google.maps.LatLng(lat,long);
+                    var marker = new google.maps.Marker({
+                        position: latLng,
+                        map: map
+                    });
+            }
+        }
+        console.log(results);
+    }
     //PLACES TYPES
     /*
     accounting
