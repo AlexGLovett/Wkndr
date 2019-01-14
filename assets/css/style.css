@@ -2,3 +2,7 @@
     height: 400px;
     width: 400px;
 }
+.newEvent{
+    border: 1px solid black;
+    text-align: center;
+}
