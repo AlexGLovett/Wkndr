@@ -26,26 +26,33 @@
     var map;
     var service;
     var infowindow;
+    var mapCenter;
 
     function initMap() {
-    var mapCenter = new google.maps.LatLng(	38.897957,-77.036560);
-
+    mapCenter = new google.maps.LatLng(	33.7490,-84.3880);
     map = new google.maps.Map(document.getElementById('map'), {
         center: mapCenter,
-        zoom: 15
+        zoom: 10
     });
-
-    var request = {
-        query: '1500 Pennsylvania Avenue',
-        fields: ['photos', 'formatted_address', 'name', 'rating', 'opening_hours', 'geometry'],
-    };
-
-    service = new google.maps.places.PlacesService(map);
-    service.findPlaceFromQuery(request, callback);
     }
+
+    $(document).on('click',"#searchTestBtn",function() {
+        // 0.000621371 miles =  1 meter
+        var searchTerm = $("#searchTest").val();
+        console.log(searchTerm);
+        var request = {
+            location: mapCenter,
+            radius: '160934',
+            type: [searchTerm]
+        };
+        
+        service = new google.maps.places.PlacesService(map);
+        service.nearbySearch(request, callback);
+    });
 
     function callback(results, status) {
         if (status == google.maps.places.PlacesServiceStatus.OK) {
+            console.log("check");
             for (var i = 0; i < results.length; i++) {
                     //var coords = results.features[i].geometry.coordinates;
                     var lat = results[i].geometry.location.lat();
@@ -57,25 +64,105 @@
                     });
             }
         }
+        console.log(results);
     }
 
-    function placeSearch() {
+    //PLACES TYPES
+    /*
+    accounting
+    airport
+    amusement_park
+    aquarium
+    art_gallery
+    atm
+    bakery
+    bank
+    bar
+    beauty_salon
+    bicycle_store
+    book_store
+    bowling_alley
+    bus_station
+    cafe
+    campground
+    car_dealer
+    car_rental
+    car_repair
+    car_wash
+    casino
+    cemetery
+    church
+    city_hall
+    clothing_store
+    convenience_store
+    courthouse
+    dentist
+    department_store
+    doctor
+    electrician
+    electronics_store
+    embassy
+    fire_station
+    florist
+    funeral_home
+    furniture_store
+    gas_station
+    gym
+    hair_care
+    hardware_store
+    hindu_temple
+    home_goods_store
+    hospital
+    insurance_agency
 
-        var address = 30318;
-        var queryURL = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=" + address + "&inputtype=textquery&key=" + config.apiKey;
+    jewelry_store
+    laundry
+    lawyer
+    library
+    liquor_store
+    local_government_office
+    locksmith
+    lodging
+    meal_delivery
+    meal_takeaway
+    mosque
+    movie_rental
+    movie_theater
+    moving_company
+    museum
+    night_club
+    painter
+    park
+    parking
+    pet_store
+    pharmacy
+    physiotherapist
+    plumber
+    police
+    post_office
+    real_estate_agency
+    restaurant
+    roofing_contractor
+    rv_park
+    school
+    shoe_store
+    shopping_mall
+    spa
+    stadium
+    storage
+    store
+    subway_station
+    supermarket
+    synagogue
+    taxi_stand
+    train_station
+    transit_station
+    travel_agency
+    veterinary_care
+    zoo
 
-        // Creates AJAX call for the specific movie button being clicked
-        $.ajax({
-          url: queryURL,
-          method: "GET"
-        }).then(function(response) {
-            console.log(response);
-          // YOUR CODE GOES HERE!!!
 
-        });
-
-      }
-    placeSearch();
+    */
     // var map;
     // function initMap() {
     // map = new google.maps.Map(document.getElementById('map'), {
