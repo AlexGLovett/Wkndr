@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Wkndr</title>
+    <title>Results | Wkndr</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Materialize css https://materializecss.com/getting-started.html-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
@@ -24,6 +24,61 @@
             </ul>
         </div>
     </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <div class="card">    
+                    <div class="card-content">
+                            <div class="responsive-img" id="map"></div>
+                            <div id="itineraryItems"><ul>
+                                <li>Itinerary Item</li>
+                                <li>Itinerary Item</li>
+                                <li>Itinerary Item</li>
+                            </ul></div>
+                            <div id="directions">Directions Placeholder</div>
+                            <div id="streetview">Streetview</div>  
+                    </div>
+
+                    <div class="card-tabs">
+                        <ul class="tabs tabs-fixed-width">
+                            <li class="tab"><a class="active" href="#map"><i class="material-icons">map</i></a></li>
+                            <li class="tab"><a href="#itineraryItems"><i class="material-icons">format_list_bulleted</i></a></li>
+                            <li class="tab"><a href="#directions"><i class="material-icons">directions</i></a></li>
+                            <li class="tab"><a href="#streetview"><i class="material-icons">streetview</i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Itinerary</span>  
+                            <form style="border:2px solid black">
+                                <input type="text" name="testSearch" id="searchTest">
+                            </form>
+                            <input type="button" name="submit" value="Search" id="searchTestBtn">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+        <!-- ALTERNATIVE BUTTON SELECTION W/ICONS
+    <div class="card-action">
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">map</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">format_list_bulleted</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">streetview</i></a>
+        <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">directions</i></a>
+    </div>
+    -->        
+
 
     <footer class="page-footer brown darken-4">
         <div class="container">
@@ -52,11 +107,15 @@
         </div>
     </footer>
     <!--jQuery CDN https://developers.google.com/speed/libraries/#jquery-->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!--Materialize JS https://materializecss.com/getting-started.html-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--Firebase link-->
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>  
+    <!--frontend local js file-->
+    <script src="assets/javascript/frontend.js"></script>
+    <!--map logic js file-->
+    <script async src="assets/javascript/mapp.js"></script>
     <!--Google Maps Javascript API + places API (async and defer allows browser to render page while API loads || callback=initMap runs function from mapp.js when api loaded-->
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc37ceea-riBN1RsG5S-EX83UVoK-7W58&libraries=places&callback=initMap"></script>
 
