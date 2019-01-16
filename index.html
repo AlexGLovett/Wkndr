@@ -13,9 +13,90 @@
     <link rel="stylesheet" type="text/css" href="assets/css/survey.css" />
 </head>
 <body>
+
+    <div class="row">
+        <div class="col s12 m6" id="card">
+            <div class="cN/A transparent">
+            <div class="card-content white-text">
+                <span class="card-title">What are your interest?</span>
+                <div class="input-field col s12">  <!-- multiple answer select form -->
+                    <select multiple>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">Hiking</option>
+                        <option value="2">Sightseeing</option>
+                        <option value="3">Shopping</option>
+                        <option value="3">Food/option>
+                    </select>
+                    <label>Choose as many as you like</label>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6" id="card">
+            <div class="N/A transparent">
+            <div class="card-content white-text">
+                <span class="card-title">Distance willing to travel</span>
+                <div class="input-field col s12">
+                    <select>
+                        <option value="" disabled selected>Choose your option</option>
+                        <option value="1">A few hours</option>
+                        <option value="2">Half a day</option>
+                        <option value="3">one day</option>
+                        <option value="3">Two days</option>
+                    </select>
+                    <label>Materialize Select</label>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6" id="card">
+            <div class="N/A transparent">
+            <div class="card-content white-text">
+                <span class="card-title">Distance willing to travel</span>
+                <div class="row">
+                    <form class="col s12"> <!-- Text Area for Miles Wanting to travel -->
+                        <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" class="numbers" value="" />
+                            <label for="textarea1">Miles</label>
+                        </div>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 m6" id="card">
+            <div class="N/A transparent">
+            <div class="card-content white-text">
+                <span class="card-title">What zip code do you want to start your Wknd?</span>
+                <div class="row">
+                    <form class="col s12"> <!-- text area for zip code -->
+                        <div class="row">
+                        <div class="input-field col s12"> 
+                            <input type="text" maxlength="5" class="numbers" value="" />
+                            <label for="textarea1">Zip Code</label>
+                        </div>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+            </div>
+        </div>
+    </div>
+
     
 <!-- multiple answer select form -->
-    <div class="input-field col s12">
+    <!-- <div class="input-field col s12">
         <select multiple>
           <option value="" disabled selected>Choose your option</option>
           <option value="1">Option 1</option>
@@ -23,7 +104,47 @@
           <option value="3">Option 3</option>
         </select>
         <label>Materialize Multiple Select</label>
-      </div>
+      </div> -->
+
+<!-- Range Slider -->
+    <!-- <form action="#">
+    <p class="range-field">
+        <input type="range" id="test5" min="0" max="100" />
+    </p>
+    </form> -->
+
+<!-- Text Area for Miles Wanting to travel -->
+<!-- <div class="row">
+    <form class="col s12">
+        <div class="row">
+        <div class="input-field col s12">
+            <input type="text" class="numbers" value="" />
+            <label for="textarea1">Miles</label>
+        </div>
+        </div>
+    </form>
+</div>  -->
+
+<!-- text area for zip code -->
+<!-- <div class="row">
+    <form class="col s12">
+        <div class="row">
+        <div class="input-field col s12">
+            <input type="text" maxlength="5" class="numbers" value="" />
+            <label for="textarea1">Zip Code</label>
+        </div>
+        </div>
+    </form>
+</div>  -->
+
+
+<!-- <span>Float</span>
+<input type="text" name="numeric" class='allownumericwithdecimal'>
+<div>Numeric values only allowed  (With Decimal Point) </div>  -->
+
+
+<!-- <input type="text" class="numbers" value="" /> -->
+
 
 
 

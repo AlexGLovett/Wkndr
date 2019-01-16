@@ -1,0 +1,8 @@
+body {
+    background-image: url("../images/survey.jpg");
+    background-size: cover;
+}
+
+#card {
+    /* opacity: .6; */
+}
