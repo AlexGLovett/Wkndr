@@ -28,13 +28,33 @@
     var infowindow;
     var geocoder;
     var mapCenter;
-    var parks = [];
-    var food = [];
-    var amusements = [];
-    var terms = ["park", "restaurant", "amusement_park", "night_club"];
+    var SELECTIONS = { //constant representing the possible categories to select and the types in them
+        "nature": ["park"],
+        "food": ["bakery","café","meal_takeaway","restaurant"],
+        "fun": ["amusement_park","bowling_alley","movie_theater"],
+        "shop": ["clothing_store","department_store","shoe_store","shopping_mall"],
+        "attraction": ["aquarium","zoo","casino"],  //available in settings
+        //"drinks": ["bar","liquor_store","night_club"], //comment out until we get a way to verify age
+        "culture": ["art_gallery","library","museum","book_store"],  //available in settings
+        "religion": ["synagogue","church","mosque","hindu_temple"],  //available in settings
+        //"self-care": ["hair_care","spa"]  //what do you guys think?
+    }
+    var userPicks = ["nature", "food", "shop"]; //what the user would pick
+    var respHash = { //hash of array to hold places responses
+        "nature": [],
+        "food": [],
+        "fun": [],
+        "shop": [],
+        "attraction": [],  //available in settings
+        //"drinks": [], //comment out until we get a way to verify age
+        "culture": [],  //available in settings
+        "religion": [],  //available in settings
+        //"self-care: []  //what do you guys think?
+    }
+    var terms = [];
+    //
     var waypnts = [];
     var markers = [];
-
     var directionsService;
     var directionsDisplay;
 
@@ -54,9 +74,18 @@
         //Reset search variables and itinerary
         $("#itineraryItems").empty();
         initMap();
-        parks = [];
-        food = [];
-        amusements = [];
+        respHash = {
+            "nature": [],
+            "food": [],
+            "fun": [],
+            "shop": [],
+            "attraction": [],  //available in settings
+            //"drinks": [], //comment out until we get a way to verify age
+            "culture": [],  //available in settings
+            "religion": [],  //available in settings
+            //"self-care: []  //what do you guys think?
+        }
+        //
         waypnts = [];
 
         //Get the input zipcode and convert to lat/lng points for resetting map and search center
@@ -86,6 +115,8 @@
     }
 
     function gatherDestinations(){
+        //fills the array with 
+        generateTerms()
         service = new google.maps.places.PlacesService(map);
         terms.forEach(function(term){
             var request = {
@@ -107,36 +138,78 @@
                     }
                 }
                 switch (term){
-                    case("park"):
-                    parks = parks.concat(resultsArray);
-                    break;
-                    case("restaurant"):
-                    food = food.concat(resultsArray);
-                    break;
-                    case("amusement_park"):
-                    amusements = amusements.concat(resultsArray);
-                    break;
-                    case("night_club"):
-                    amusements = amusements.concat(resultsArray);
-                    break;
+                    //case determines if the array in the constant hash object contains the term
+                    //if it does it fills the corresponding array in the response hash object
+                    //by concating resultsArray obtained by the Google Places API
+                    case(contains(SELECTIONS.nature, term)):
+                        respHash.nature = respHash.nature.concat(resultsArray);
+                        break;
+                    case(contains(SELECTIONS.food, term)):
+                        respHash.food = respHash.food.concat(resultsArray);
+                        break;
+                    case(contains(SELECTIONS.fun, term)):
+                        respHash.fun = respHash.fun.concat(resultsArray);
+                        break;
+                    case(contains(SELECTIONS.shop, term)):
+                        respHash.shop = respHash.shop.concat(resultsArray);
+                        break;
+                    case(contains(SELECTIONS.attraction, term)):
+                        respHash.attraction = respHash.attraction.concat(resultsArray);
+                        break;
+                    case(contains(SELECTIONS.culture, term)):
+                        respHash.culture = respHash.culture.concat(resultsArray);
+                        break;
+                    case(contains(SELECTIONS.religion, term)):
+                        respHash.religion = respHash.religion.concat(resultsArray);
+                        break;
                 }
             }
         });
     }
 
+    function generateTerms(){
+        //iterates the usersPicks array
+        for(var i = 0; i<userPicks.length; i++){
+            var pick = userPicks[i];
+            //hashes into selections array by string in picks variable
+            var selections = SELECTIONS[pick]; 
+            //random term from selections array is pushed into terms array 
+            terms.push(selections[Math.floor(Math.random() * selections.length)]);
+        }
+    }
+
+    //used for the case statement to determine if the switch string is within
+    //the array
+    function contains(array, elem){
+        if(array.indexOf(elem) > -1){
+            return elem;
+        }
+        return;
+    }
+
     function createItinerary(){
-        parks.sort(function(a, b){return b.rating-a.rating});
-        food.sort(function(a, b){return b.rating-a.rating});
-        amusements.sort(function(a, b){return b.rating-a.rating});
-        var randomFood = food[Math.floor(Math.random()*(food.length/2))];
-        postEvent(randomFood, "Food", 1);
-        mapDestination(mapCenter, randomFood, "#trip1");
-        var randomPark = parks[Math.floor(Math.random()*(parks.length/2))];
-        postEvent(randomPark,"Outdoors", 2);
-        mapDestination(randomFood, randomPark, "#trip2");
-        var randomAmusement = amusements[Math.floor(Math.random()*(amusements.length/2))];
-        postEvent(randomAmusement, "Amusement", 3);3
-        mapDestination(randomPark, randomAmusement, "#trip3");
+        //
+        var i = 1;
+        var prevRandom = {};
+        for(var prop in respHash){
+            var array = respHash[prop];
+            if(array.length < 1){
+                console.log("array length 0 for respHash["+prop+"]")
+                continue;
+            }
+            array.sort(function(a, b){return b.rating-a.rating});
+            var random = array[Math.floor(Math.random()*(array.length/2))];
+            var strType = prop.charAt(0).toUpperCase() + prop.slice(1);
+            postEvent(random, strType, i);
+            if(i === 1){
+                mapDestination(mapCenter, random, "#trip"+i);
+            }else{
+                mapDestination(prevRandom, random, "#trip"+i);
+                //generateWaypoint($("#addressDest"+(i-1)).text());
+            }
+            prevRandom = random;
+            i++;
+        }
         generateWaypoint($("#addressDest1").text());
         generateWaypoint($("#addressDest2").text());
 
