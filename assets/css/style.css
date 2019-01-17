@@ -1,11 +1,136 @@
-#map, #placeholdermap, #itineraryItems, #directions, #streetview {
-    height: 50vh;
-    width: 100%;
-    overflow: scroll;
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+main {
+    flex: 1 0 auto;
+    background-image: url('../images/bg-paper_lightened.jpg');
+    background-size: cover;
+    z-index: 0;
 }
 
+nav {
+    position: relative;
+    box-shadow: 0 0 25px 0 #212121;
+    z-index: 999;
+}
 
-.newEvent{
-    border: 1px solid black;
+.sidenav-link > a {
+    font-size: 3rem;
+}
+
+.sidenav-link:after {
+    content: "";
+    display: block;
+    margin: 0 auto;
+    width: 79%;
+    border-bottom: rgb(160, 159, 159) 1px solid;
+}
+
+.card-results {
+    margin-top: 2rem;
+}
+
+#map, #placeholdermap, #itineraryItems, #directions, #streetview {
+    height: 75vh;
+    width: 100%;
+    overflow: auto;
+}
+
+.material-icons {
+    color: #8bc34a;
+}
+
+/* styling for itinerary items */
+
+#itineraryHolder > h4 {
     text-align: center;
+    margin-bottom: 2rem;
+}
+
+#itineraryItems > div {
+    padding: 2rem;
+    margin: 0;
+}
+
+#itineraryItems div:nth-child(odd) {
+    background-color: #f1f8e9;
+}
+
+#itineraryItems div:nth-child(even) {
+    background-color: #f9fdf4;
+}
+
+/* CSS loading screen animation */
+
+@keyframes anima1 {
+    0%   { top: 0;                 left: 0;                 }
+    25%  { top: 0;                 left: calc(100% - 20px); }
+    50%  { top: calc(100% - 20px); left: calc(100% - 20px); }
+    75%  { top: calc(100% - 20px); left: 0;                 }
+    100% { top: 0;                 left: 0;                 }
+  }
+  @keyframes anima2 {
+    0%   { top: 0;                 left: calc(100% - 20px); }
+    25%  { top: calc(100% - 20px); left: calc(100% - 20px); }
+    50%  { top: calc(100% - 20px); left: 0;                 }
+    75%  { top: 0;                 left: 0;                 }
+    100% { top: 0;                 left: calc(100% - 20px); }
+  }
+  @keyframes anima3 {
+    0%   { top: calc(100% - 20px); left: calc(100% - 20px); }
+    25%  { top: calc(100% - 20px); left: 0;                 }
+    50%  { top: 0;                 left: 0;                 }
+    75%  { top: 0;                 left: calc(100% - 20px); }
+    100% { top: calc(100% - 20px); left: calc(100% - 20px); }
+  }
+  @keyframes anima4 {
+    0%   { top: calc(100% - 20px); left: 0;                 }
+    25%  { top: 0;                 left: 0;                 }
+    50%  { top: 0;                 left: calc(100% - 20px); }
+    75%  { top: calc(100% - 20px); left: calc(100% - 20px); }
+    100% { top: calc(100% - 20px); left: 0;                 }
+  }
+  .loading-wrapper {
+    height: 60px;
+    width: 60px;
+    margin: 35% auto;
+    position: relative;
+  }
+
+  .item {
+    position: absolute;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+  }
+  .item:nth-child(1) {
+    background-color: #dcedc8;
+    top: 0;
+    left: 0;
+    animation: anima1 2s ease infinite; 
+  }
+  .item:nth-child(2) {
+    background-color: #aed581;
+    top: 0;
+    right: 0;
+    animation: anima2 2s ease infinite;
+  }
+  .item:nth-child(3) {
+    background-color: #8bc34a;
+    bottom: 0;
+    left: 0;
+    animation: anima3 2s ease infinite;
+  }
+  .item:nth-child(4) {
+    background-color: #689f38;
+    bottom: 0;
+    right: 0;
+    animation: anima4 2s ease infinite;
+  }
+
+.fab { /*fontawesome icons (github in footer) */
+    font-size: 3rem;
 }
