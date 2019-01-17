@@ -1,11 +1,19 @@
 function createItinerary(){
 
-    //itinerary number variable
-    var itineraryItem = 1;
-    var previousDestination = {};
-
+    var itineraryItem = 2;
     for (var poiSet in possiblePOIS) {
-        var poiChoices = possiblePOIS[poiSet];
+        selectDestination(poiSet, itineraryItem);
+        itineraryItem++;
+    };
+
+    setTimeout(routeItinerary, 2000);
+    
+}
+
+function selectDestination(searchTerm, itineraryItem){
+    //itinerary number variable
+    var previousDestination = {};
+    var poiChoices = possiblePOIS[searchTerm];
         if(poiChoices.length >= 1){
             
             //Sort ratings from highest to lowest
@@ -30,10 +38,8 @@ function createItinerary(){
             //Prepares for the next waypoint mapping by setting the previous destination to the current choice
             previousDestination = randomChoice;
             //Move onto the next itinerary item
-            itineraryItem++;
         }
-    };
-
-    setTimeout(routeItinerary, 2000);
-    
+        else{
+            console.log("Couldn't find any results for the prime destination search.");
+        }
 }

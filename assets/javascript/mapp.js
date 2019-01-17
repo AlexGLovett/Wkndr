@@ -15,6 +15,9 @@
     var infowindow;
     var geocoder;
     var mapCenter;
+    var primeTerm = "nature";
+    var primeDestination = true;
+    var primeDestinationAddres;
     var eventStructure = {
         "friAft": {eventCount:4,foodCount:1},
         "friday": {eventCount:8,foodCount:3},
@@ -65,11 +68,27 @@
         directionsDisplay = new google.maps.DirectionsRenderer;
     }
 
+    function generateTerms(){
+        console.log("Generating terms.");
+        //iterates the usersPicks array
+        for(var i = 0; i<defaultPicks.length; i++){
+            var pick = defaultPicks[i];
+            //hashes into POI_CHOICES array by string in picks variable
+            var selections = POI_CHOICES[pick]; 
+            //random term from selections array is pushed into terms array 
+            terms.push(selections[Math.floor(Math.random() * selections.length)]);
+        }
+    }
+
+    //populates the terms array with picks from the user
+    generateTerms();
+
     //Reset map, search variables, and itinerary
     function resetSearch(){
         $("#itineraryItems").empty();
         initMap();
         waypnts = [];
+        primeDestination = true;
         possiblePOIS = { "nature": [], "food": [], "fun": [], "shop": [], 
                         "attraction": [], "adult": [], "culture": [], "religion": [],
                         "self-care": [] }
@@ -89,7 +108,7 @@
         geocoder = new google.maps.Geocoder();
 
         //Find the input search address, display it on the map, and perform a Places search within the area as a callback function
-        codeAddress($("#searchTest").val(),gatherDestinations);
+        codeAddress($("#searchTest").val(),selectPrimeDestination);
     });
 
     function codeAddress(location, callback) {
@@ -122,15 +141,27 @@
 
     }
 
-    function findDestinations(term, callBack){
-
-        var request = {
-            location: mapCenter,
-            radius: '40934', // 0.000621371 miles =  1 meter
-            rating: '4',
-            type: [term],
-            fields: ['formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
-        };
+    function findDestinations(term, primeDestination, callBack){
+        if (primeDestination == true){
+            var request = {
+                location: mapCenter,
+                radius: '106934', // 0.000621371 miles =  1 meter
+                rating: '4',
+                type: [term],
+                fields: ['formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
+            };
+            primeDestination = false;
+            terms.splice(terms.indexOf(term),1);
+        }
+        else{
+            var request = {
+                location: primeDestinationAddres,
+                radius: '40934', // 0.000621371 miles =  1 meter
+                rating: '4',
+                type: [term],
+                fields: ['formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
+            };
+        }
 
         service.nearbySearch(request, callback);
 
@@ -172,17 +203,7 @@
         setTimeout(callBack,1000); 
     }
 
-    function generateTerms(){
-        console.log("Generating terms.");
-        //iterates the usersPicks array
-        for(var i = 0; i<defaultPicks.length; i++){
-            var pick = defaultPicks[i];
-            //hashes into POI_CHOICES array by string in picks variable
-            var selections = POI_CHOICES[pick]; 
-            //random term from selections array is pushed into terms array 
-            terms.push(selections[Math.floor(Math.random() * selections.length)]);
-        }
-    }
+
 
     //Post gathered itinerary items to the webpage
     function postEvent(destination, type, destinationNumber){
@@ -232,11 +253,6 @@
 
     function mapDestination(origin, destination, tripID){
 
-        //adjust the map view to the search location
-        if (origin != mapCenter){
-            origin = new google.maps.LatLng(origin.geometry.location.lat(),origin.geometry.location.lng());
-        }
-
         //create and add markers to the map to show the destinations
         var lat = destination.geometry.location.lat();
         var long = destination.geometry.location.lng();
@@ -246,6 +262,14 @@
             map: map
         });
         markers.push(marker);
+
+        //adjust the map view to the search location
+        if (origin != mapCenter){
+            origin = new google.maps.LatLng(origin.geometry.location.lat(),origin.geometry.location.lng());
+        }
+        else{
+            primeDestinationAddres = latLng;
+        }
 
         //add destination as a waypoint
         var newPt = {
@@ -259,22 +283,37 @@
         plotDistance(origin, latLng, tripID);
     }
 
-    
+    function createFirstCallback(){
+        console.log(possiblePOIS);
+        setTimeout(createFirst,20000);
+    }
 
-    function gatherDestinations(){
-        //populates the terms array with picks from the user
-        generateTerms();
+    //Maps the first point so that the secondary points can be plotted in reference to it
+    function createFirst(){
+        console.log(possiblePOIS);
+        selectDestination(primeTerm, 1);
+        gatherDestinations();
+    }
+
+    function selectPrimeDestination(){
+
         //initialize the Places api service
         service = new google.maps.places.PlacesService(map);
+
+        findDestinations(primeTerm, primeDestination, createFirstCallback);
+
+    }
+
+    function gatherDestinations(){
 
         //for each term in the pick set, find destinations for 
         //that term then create an itinerary as a callback when done
         for (var i = 0; i < terms.length; i++){
             if (i === (terms.length - 1)){
-                findDestinations(terms[i], createItinerary);
+                findDestinations(terms[i], primeDestination, createItinerary);
             }
             else{
-                findDestinations(terms[i], dummy);
+                findDestinations(terms[i], primeDestination, dummy);
             }
         };
     }
