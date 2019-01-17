@@ -16,77 +16,192 @@
 </head>
 <body>
     <header>
-        <nav class="light-green darken-4">
-            <!--  Navbar structure, visible on desktop -->
+            <!--
             <div class="nav-wrapper container">
-                <!-- Brand Logo -->
-                <a href="javascript:void(0)" class="brand-logo">WKNDR</a>
-                <!--  Trigger sidenav  -->
-                <a href="javascript:void(0)" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+                <a href="#" class="brand-logo center">WKNDR</a>
+
+                <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons">menu</i></a>
 
                 <ul id="nav-mobile" class="right hide-on-med-and-down">
                     <li><a href="#">Survey</a></li>
-                    <li  class="active"><a href="javascript:void(0)">Results</a></li>
-                    <li><a href="javascript:void(0)">New Trip</a></li>
+                    <li  class="active"><a href="#">Results</a></li>
+                    <li><a href="#">New Trip</a></li>
                 </ul>
-            </div>     
-            <!--  Sidenav structure, visible on tablet and mobile  -->
-            <ul id="slide-out" class="sidenav">
-                <li>
-                    <!--Sidenav image and user elements-->
-                    <div class="user-view">
-                        <div class="background">
-                            <img src="assets/images/bg-backpack.jpg" alt="Background User View" class="responsive-img">
-                        </div>
-                    
-                        <a href="#user"><img class="circle" src="assets/images/user-placeholder.jpg" alt="Avatar User View"></a>
-                        <a href="#name"><span class="white-text name">Example User</span></a>
-                        <a href="#email"><span class="white-text email">exampleuser@gmail.com</span></a>
+            </div> -->
+            
+            <!-- sliding sidenav -->
+        <ul id="slide-out" class="sidenav sidenav-fixed">
+            <li>
+                
+                <div class="user-view">
+                    <div class="background">
+                        <img src="assets/images/bg-backpack.jpg" alt="Background User View" class="responsive-img">
                     </div>
-                </li>
-                <!--Sidenav links-->
-                <li class="sidenav-link"><a class="waves-effect" href="javascript:void(0)">Survey</a></li>
-                <li class="sidenav-link"><a class="waves-effect" href="javascript:void(0)">Results</a></li>
-                <li class="sidenav-link"><a class="waves-effect" href="javascript:void(0)">New Trip</a></li>
-            </ul>
-        </nav>
-        
-        <!-- REGULAR NAV
-        <nav>
-            <div class="nav-wrapper light-green darken-4">
-                <a href="#" class="brand-logo"><img class="responsive-img" src="assets/images/wkndr.svg" alt="Logo Image" id="wkndr-logo"></a>
-                    <ul class="right hide-on-med-and-down">
-                    <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-                    <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
-                    <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-                    <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
-                </ul>
+                
+                    <a href="#user"><img class="circle" src="assets/images/user-placeholder.jpg" alt="Avatar User View"></a>
+                    <a href="#name"><span class="white-text name">Example User</span></a>
+                    <a href="#email"><span class="white-text email">exampleuser@gmail.com</span></a>
+                </div>
+            </li>
+            
+            <li class="sidenav-link"><a class="waves-effect" href="#">My Account</a></li>
+            <li class="sidenav-link"><a class="waves-effect" href="#">Back To Survey</a></li>
+
+            <br><br>
+
+            <div id="selectors">
+                <div class="row">
+                    <div class="input-field col s12 center-align">
+                        <h5>Trip Settings</h5>
+                    </div>
+                </div>
+
+                <div class="row" id="margin-zero">
+                    <div class="input-field col s12">
+                        <input id="destinationAmount" type="number" class="validate">
+                        <label class="active" for="destinationAmount">How many destinations?</label>
+                    </div>
+                </div>
+
+                <div class="row" id="margin-zero">
+                    <div class="input-field col s12" id="margin-zero">
+                        <p class="range-field">
+                            <input class="checkbox-green" type="range" id="budget" min="0" max="1000" />
+                        </p>   
+
+                        <label class="active" for="test5">Budget ($)</label>
+                    </div>
+                </div>
+    
+                <div class="row">
+                    <div class="input-field col s12">
+                        <p class="range-field">
+                            <input class="checkbox-green" type="range" id="range" min="10" max="500" />
+                        </p>   
+
+                        <label class="active" for="range">Distance (miles)</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s3">
+                        <a class="tooltipped" data-position="top" data-tooltip="Nature">
+                            <label for="nature">
+                                <input type="checkbox" class="filled-in checkbox-green" id="nature" checked="checked" />
+                                <span><i class="fas fa-tree"></i></span>
+                            </label> 
+                        </a>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <a class="tooltipped" data-position="top" data-tooltip="Food">
+                            <label>
+                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <span><i class="fas fa-utensils"></i></span>
+                            </label>
+                        </a>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <a class="tooltipped" data-position="top" data-tooltip="Amusements">
+                            <label>
+                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <span><i class="fas fa-film"></i></span>
+                            </label>
+                        </a>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <a class="tooltipped" data-position="top" data-tooltip="Shopping">
+                            <label>
+                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <span><i class="fas fa-shopping-bag"></i></span>
+                            </label>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s3">
+                        <a class="tooltipped" data-position="top" data-tooltip="Attractions">
+                            <label>
+                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <span><i class="fas fa-archway"></i></span>
+                            </label>
+                        </a>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <a class="tooltipped" data-position="top" data-tooltip="Nightlife">
+                            <label>
+                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <span><i class="fas fa-cocktail"></i></span>
+                            </label>
+                        </a>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <a class="tooltipped" data-position="top" data-tooltip="Culture">
+                            <label>
+                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <span><i class="fas fa-landmark"></i></span>
+                            </label>
+                        </a>
+                    </div>
+
+                    <div class="input-field col s3">
+                        <a class="tooltipped" data-position="top" data-tooltip="Self-Care">
+                            <label>
+                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <span><i class="fas fa-hands-helping"></i></span>
+                            </label>
+                        </a>
+                    </div>  
+                </div>
+                <!-- <a class="tooltipped right" data-position="top" data-tooltip="nature"><i class="far fa-question-circle"></i></a> -->
+                <div class="row">
+                    <div class="col s12 center" id="plan-weekend-btn">
+                        <button class="btn green waves-effect">Plan Weekend</button>
+                    </div>
+                </div>    
             </div>
-        </nav> -->
+        </ul>
     </header>
 
     <main>
         <div class="container">
             <div class="row">
-                <div class="col s12">
+                <div class="col s12 l9 offset-l3">
                     <div class="card card-results z-depth-4" >    
                         <div class="card-content">
-                                <div class="responsive-img" id="map">
-                                    <div class="loading-wrapper">
-                                        <div class="item"></div>
-                                        <div class="item"></div>
-                                        <div class="item"></div>
-                                        <div class="item"></div>
+                            <div class="responsive-img" id="map">
+                                <div class="loading-wrapper">
+                                    <div class="item"></div>
+                                    <div class="item"></div>
+                                    <div class="item"></div>
+                                    <div class="item"></div>
+                                </div>
+                            </div>
+
+                            <div id="itineraryHolder">
+                                <h4>Itinerary</h4>
+
+                                <div class="row">
+                                    <!--Itinerary Selectors-->
+                                    <div class="col s12 m6 l3">
+                                        <p>fsdalfkj</p>
+                                    </div>
+                                    <!--Placeholder Itinerary-->
+                                    <div class="col s12 m6 l9" id="itineraryItems">
+                                        <div id="newEvent1"><h5>Destination 1: Hard Labor Creek State Park</h5><h6>Activity Type: Nature</h6><h7 id="addressDest1">5 Hard Labor Creek Road, Rutledge</h7><br><h7 id="trip1">Travel Distance: 27.1 mi</h7></div><div id="newEvent2"><h5>Destination 2: Athens Bagel Company</h5><h6>Activity Type: Food</h6><h7 id="addressDest2">268 North Jackson Street, Athens</h7><br><h7 id="trip2">Travel Distance: 28.7 mi</h7></div><div id="newEvent3"><h5>Destination 3: GUESS Factory</h5><h6>Activity Type: Shop</h6><h7 id="addressDest3">800 Steven B Tanger Boulevard Space 1202, Commerce</h7><br><h7 id="trip3">Travel Distance: 23.9 mi</h7></div>
                                     </div>
                                 </div>
-                                <div id="itineraryHolder">
-                                    <h4>Itinerary</h4>
-                                    <div id="itineraryItems">
-                                        <!--Placeholder Itinerary-->
-                                            <div id="newEvent1"><h5>Destination 1: Hard Labor Creek State Park</h5><h6>Activity Type: Nature</h6><h7 id="addressDest1">5 Hard Labor Creek Road, Rutledge</h7><br><h7 id="trip1">Travel Distance: 27.1 mi</h7></div><div id="newEvent2"><h5>Destination 2: Athens Bagel Company</h5><h6>Activity Type: Food</h6><h7 id="addressDest2">268 North Jackson Street, Athens</h7><br><h7 id="trip2">Travel Distance: 28.7 mi</h7></div><div id="newEvent3"><h5>Destination 3: GUESS Factory</h5><h6>Activity Type: Shop</h6><h7 id="addressDest3">800 Steven B Tanger Boulevard Space 1202, Commerce</h7><br><h7 id="trip3">Travel Distance: 23.9 mi</h7></div></div>
-                                </div>
-                                <div id="directions">Directions Placeholder</div>
-                                <div id="streetview">Streetview</div>  
+                            </div>
+
+                            <div id="directions">Directions Placeholder</div>
+
+                            <div id="streetview">Streetview</div>  
                         </div>
 
                         <div class="card-tabs">
@@ -100,25 +215,23 @@
                     </div>
                 </div>
             </div>
-            <!--Placeholder Search -- Please Delete -->
+            <!--Placeholder Search -- Please Delete 
             <div class="row">
                 <div class="col s12">
-                        <div class="card">
-                            <div class="card-content">
-                                <span class="card-title">Itinerary</span>  
-                                <form">
-                                    <input type="text" name="testSearch" id="searchTest">
-                                </form>
-                                <input class="btn light-green" type="button" name="submit" value="Search" id="searchTestBtn">
-                            </div>
+                    <div class="card">
+                        <div class="card-content">
+                            <span class="card-title">Itinerary</span>  
+                            <form">
+                                <input type="text" name="testSearch" id="searchTest">
+                            </form>
+                            <input class="btn light-green" type="button" name="submit" value="Search" id="searchTestBtn">
                         </div>
                     </div>
                 </div>
             </div>
-        
+        -->
         </div>
     </main>
-
 
     <footer class="page-footer grey darken-4">
         <div class="container">

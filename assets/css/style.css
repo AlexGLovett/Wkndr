@@ -6,7 +6,7 @@ body {
 
 main {
     flex: 1 0 auto;
-    background-image: url('../images/bg-paper_lightened.jpg');
+    background-image: url('../images/bg-trees.jpg');
     background-size: cover;
     z-index: 0;
 }
@@ -29,8 +29,31 @@ nav {
     border-bottom: rgb(160, 159, 159) 1px solid;
 }
 
+.input-field {
+  margin-top: 0 !important;
+  margin-bottom: 1rem !important;
+}
+
+#margin-zero {
+  margin: 0 !important;
+}
+
+input[type=range]+.thumb.value {
+  background-color: #8bc34a !important;
+}
+
+.checkbox-green[type="checkbox"].filled-in:checked + span:after{
+  border: 2px solid #8bc34a;
+  background-color: #8bc34a;
+}
+
+#plan-weekend-btn {
+  margin-top: 5rem;
+}
+
 .card-results {
     margin-top: 2rem;
+    opacity: 0.85;
 }
 
 #map, #placeholdermap, #itineraryItems, #directions, #streetview {
