@@ -11,7 +11,7 @@ body {
 
 #select {
     position:absolute;
-    top: 23%;
+    top: 27%;
     left: 25%;
 }
 
@@ -29,7 +29,24 @@ body {
     left: 45%;
 }
 
+.horizon {
+    float: left;
+}
+
+[type="checkbox"]+span:not(.lever) {
+    padding-left: 25px;
+    margin: 0px 30px 0px 0px;
+}
+
 /* label color */
+label {
+    color: white;
+}
+
+#grey {
+    color: grey;
+}
+
 .input-field label {
     color: gray;
 }
@@ -43,4 +60,31 @@ body {
 .input-field input[type=text]:focus {
     border-bottom: 1px solid whitesmoke;
     box-shadow: 0 1px 0 0 whitesmoke;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid white;
+    box-shadow: 0 1px 0 0 white;
+    color: white;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly])+label {
+    color: grey;
+}
+
+[type="checkbox"]:checked+span:not(.lever):before {
+    top: -4px;
+    left: -5px;
+    width: 12px;
+    height: 22px;
+    border-top: 2px solid transparent;
+    border-left: 2px solid transparent;
+    border-right: 2px solid white;
+    border-bottom: 2px solid white;
+    -webkit-transform: rotate(40deg);
+    transform: rotate(40deg);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transform-origin: 100% 100%;
+    transform-origin: 100% 100%;
 }

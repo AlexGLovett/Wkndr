@@ -42,14 +42,6 @@ $("#btn").click(function() {
         $("#btn").hide();
         $("#msg").fadeIn();
         $("#btn2").fadeIn();
-
-            var $this = $(this);
-            $this.toggleClass('btn');
-            if($this.hasClass('btn')){
-                $this.text('Submit');			
-            } else {
-                $this.text('test');
-            };
     }
 })
 
