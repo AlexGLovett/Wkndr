@@ -1,5 +1,4 @@
-/* 1. initialize firebase
-*/
+// 1. initialize firebase
   var config = {
     apiKey: "AIzaSyBPXBq7lkhMN8u7aRJOqok8zhZcElsFYI4",
     authDomain: "wkndr-228415.firebaseapp.com",
@@ -10,25 +9,13 @@
   };
   firebase.initializeApp(config);
 
-
-
-/* 2. global variables
-*/
-
-
-/* 3. initialize map object
-    Using Places and other Google Maps APIs through a Google Map Object
-    https://developers.google.com/maps/documentation/javascript/importing_data        
-*/
-
-
-
+// 2. global variables
     var map;
     var service;
     var infowindow;
     var geocoder;
     var mapCenter;
-    var SELECTIONS = { //constant representing the possible categories to select and the types in them
+    var POI_CHOICES = { //constant representing the possible categories to select and the types in them
         "nature": ["park"],
         "food": ["bakery","café","meal_takeaway","restaurant"],
         "fun": ["amusement_park","bowling_alley","movie_theater"],
@@ -39,147 +26,85 @@
         "religion": ["synagogue","church","mosque","hindu_temple"],  //available in settings
         //"self-care": ["hair_care","spa"]  //what do you guys think?
     }
-    var userPicks = ["nature", "food", "shop"]; //what the user would pick
-    var respHash = { //hash of array to hold places responses
-        "nature": [],
-        "food": [],
-        "fun": [],
-        "shop": [],
-        "attraction": [],  //available in settings
-        //"drinks": [], //comment out until we get a way to verify age
-        "culture": [],  //available in settings
-        "religion": [],  //available in settings
-        //"self-care: []  //what do you guys think?
-    }
+    //default picks
+    var defaultPicks = ["nature", "food", "shop"]; 
+    //hash of array to hold places responses
+    var possiblePOIS = { "nature": [], "food": [], "fun": [], "shop": [],
+                        "attraction": [], "drinks": [], "culture": [], "religion": [],  //available in settings
+                        "self-care": [] }
     var terms = [];
-    //
     var waypnts = [];
     var markers = [];
+    var lastDestination;
     var directionsService;
     var directionsDisplay;
 
+/* 3. initialize map object
+    Using Places and other Google Maps APIs through a Google Map Object
+    https://developers.google.com/maps/documentation/javascript/importing_data        
+*/
+
+    //Initialize the map object from which other api calls are made
     function initMap() {
         
+        //on map creation, center on Atlanta via lat-long coordinates
         var initialCenter = new google.maps.LatLng(	33.7490,-84.3880);
         map = new google.maps.Map(document.getElementById('map'), {
             center: initialCenter,
             zoom: 10
         });
+
+        //initialize the direction service and set display source to the map
         directionsService = new google.maps.DirectionsService;
         directionsDisplay = new google.maps.DirectionsRenderer;
-
     }
-    $(document).on('click',"#searchTestBtn",function() {
 
-        //Reset search variables and itinerary
+    //Reset map, search variables, and itinerary
+    function resetSearch(){
         $("#itineraryItems").empty();
         initMap();
-        respHash = {
-            "nature": [],
-            "food": [],
-            "fun": [],
-            "shop": [],
-            "attraction": [],  //available in settings
-            //"drinks": [], //comment out until we get a way to verify age
-            "culture": [],  //available in settings
-            "religion": [],  //available in settings
-            //"self-care: []  //what do you guys think?
-        }
-        //
         waypnts = [];
+        possiblePOIS = { "nature": [], "food": [], "fun": [], "shop": [], 
+                        "attraction": [], "adult": [], "culture": [], "religion": [],
+                        "self-care": [] }
+    }
+
+    //When the search button is clicked, begin searching for selected terms within a distance of the origin point (zipcode)
+    $(document).on('click',"#searchTestBtn",function() {
+
+        console.log("Initiating Map & Search");
+
+        //Reset map, search variables, and itinerary
+        resetSearch();
 
         //Get the input zipcode and convert to lat/lng points for resetting map and search center
         directionsDisplay.setMap(map);
-        geocoder = new google.maps.Geocoder();
-        codeAddress($("#searchTest").val(),gatherDestinations);
-        setTimeout(createItinerary,1000);
-        setTimeout(routeItinerary,2000);
 
+        geocoder = new google.maps.Geocoder();
+
+        //Find the input search address, display it on the map, and perform a Places search within the area as a callback function
+        codeAddress($("#searchTest").val(),gatherDestinations);
     });
 
     function codeAddress(location, callback) {
         var address = location;
         geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == 'OK') {
-            map.setCenter(results[0].geometry.location);
-            mapCenter = results[0].geometry.location;
-            var marker = new google.maps.Marker({
-                map: map,
-                position: results[0].geometry.location
-            });
-            callback();
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-    }
-
-    function gatherDestinations(){
-        //fills the array with 
-        generateTerms()
-        service = new google.maps.places.PlacesService(map);
-        terms.forEach(function(term){
-            var request = {
-                location: mapCenter,
-                radius: '40934', // 0.000621371 miles =  1 meter
-                rating: '4',
-                type: [term],
-                fields: ['formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
-            };
-            service.nearbySearch(request, callback);
-
-            function callback(results, status, pagination) {
-                var resultsArray = results;
-                if (status == google.maps.places.PlacesServiceStatus.OK) {
-                    for (var i = 0; i < results.length; i++) {
-                    }
-                    if (pagination.hasNextPage){
-                        resultsArray.concat(pagination.nextPage());
-                    }
-                }
-                switch (term){
-                    //case determines if the array in the constant hash object contains the term
-                    //if it does it fills the corresponding array in the response hash object
-                    //by concating resultsArray obtained by the Google Places API
-                    case(contains(SELECTIONS.nature, term)):
-                        respHash.nature = respHash.nature.concat(resultsArray);
-                        break;
-                    case(contains(SELECTIONS.food, term)):
-                        respHash.food = respHash.food.concat(resultsArray);
-                        break;
-                    case(contains(SELECTIONS.fun, term)):
-                        respHash.fun = respHash.fun.concat(resultsArray);
-                        break;
-                    case(contains(SELECTIONS.shop, term)):
-                        respHash.shop = respHash.shop.concat(resultsArray);
-                        break;
-                    case(contains(SELECTIONS.attraction, term)):
-                        respHash.attraction = respHash.attraction.concat(resultsArray);
-                        break;
-                    case(contains(SELECTIONS.culture, term)):
-                        respHash.culture = respHash.culture.concat(resultsArray);
-                        break;
-                    case(contains(SELECTIONS.religion, term)):
-                        respHash.religion = respHash.religion.concat(resultsArray);
-                        break;
-                }
+            if (status == 'OK') {
+                map.setCenter(results[0].geometry.location);
+                mapCenter = results[0].geometry.location;
+                var marker = new google.maps.Marker({
+                    map: map,
+                    position: results[0].geometry.location
+                });
+                callback();
+            } 
+            else {
+                alert('Geocode was not successful for the following reason: ' + status);
             }
         });
     }
 
-    function generateTerms(){
-        //iterates the usersPicks array
-        for(var i = 0; i<userPicks.length; i++){
-            var pick = userPicks[i];
-            //hashes into selections array by string in picks variable
-            var selections = SELECTIONS[pick]; 
-            //random term from selections array is pushed into terms array 
-            terms.push(selections[Math.floor(Math.random() * selections.length)]);
-        }
-    }
-
-    //used for the case statement to determine if the switch string is within
-    //the array
+    //used for the case statement to determine if the switch string is within the array
     function contains(array, elem){
         if(array.indexOf(elem) > -1){
             return elem;
@@ -187,112 +112,219 @@
         return;
     }
 
-    function createItinerary(){
-        //
-        var i = 1;
-        var prevRandom = {};
-        for(var prop in respHash){
-            var array = respHash[prop];
-            if(array.length < 1){
-                console.log("array length 0 for respHash["+prop+"]")
-                continue;
-            }
-            array.sort(function(a, b){return b.rating-a.rating});
-            var random = array[Math.floor(Math.random()*(array.length/2))];
-            var strType = prop.charAt(0).toUpperCase() + prop.slice(1);
-            postEvent(random, strType, i);
-            if(i === 1){
-                mapDestination(mapCenter, random, "#trip"+i);
-            }else{
-                mapDestination(prevRandom, random, "#trip"+i);
-                //generateWaypoint($("#addressDest"+(i-1)).text());
-            }
-            prevRandom = random;
-            i++;
-        }
-        generateWaypoint($("#addressDest1").text());
-        generateWaypoint($("#addressDest2").text());
+    function dummy(){
 
-        function postEvent(destination, type, destinationNumber){
-            var newItem = $("<div id='newEvent" + destinationNumber + "'>");
-            var title = $("<h5>").text("Destination " + destinationNumber + ": " + destination.name).appendTo(newItem);
-            var type = $("<h6>").text("Activity Type: " + type).appendTo(newItem);
-            var address = $("<h7 id='addressDest" + destinationNumber + "'>").text(destination.vicinity).appendTo(newItem);
-            $("#itineraryItems").append(newItem);
-            newItem.append("<br>");
-            var travelDistance = $("<h7 id='trip" + destinationNumber + "'>").text("Travel Distance: ").appendTo(newItem);
-            $("#itineraryItems").append(newItem);
-        }
+    }
 
-        function mapDestination(origin,destination, tripID){
-            if (origin != mapCenter){
-                origin = new google.maps.LatLng(origin.geometry.location.lat(),origin.geometry.location.lng());
-            }
-            var lat = destination.geometry.location.lat();
-            var long = destination.geometry.location.lng();
-            var latLng = new google.maps.LatLng(lat,long);
-            var marker = new google.maps.Marker({
-               position: latLng,
-                map: map
-            });
-            markers.push(marker);
-            plotDistance(origin, latLng, tripID);
-        }
+    function findDestinations(term, callBack){
 
-        function plotDistance(start, stop, tripID){
-            var service = new google.maps.DistanceMatrixService();
-            service.getDistanceMatrix(
-            {
-                origins: [start],
-                destinations: [stop],
-                travelMode: 'DRIVING',
-                //Options for transit
-                //transitOptions: TransitOptions,
-                //options for driving
-                drivingOptions: {
-                    departureTime: new Date(Date.now()),
-                    trafficModel: "bestguess"
-                },
-                unitSystem: google.maps.UnitSystem.IMPERIAL,
-                //boolean
-                avoidHighways: false,
-                avoidTolls: true,
-            }, callback);
+        var request = {
+            location: mapCenter,
+            radius: '40934', // 0.000621371 miles =  1 meter
+            rating: '4',
+            type: [term],
+            fields: ['formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
+        };
 
-            function callback(response, status) {
-            // See Parsing the Results for
-            // the basics of a callback function.
-            if (status == google.maps.DistanceMatrixStatus.OK) {
-                $(tripID).text("Travel Distance: " + response.rows[0].elements[0].distance.text);
+        service.nearbySearch(request, callback);
+
+        function callback(results, status, pagination) {
+            var resultsArray = results;
+            if (status == google.maps.places.PlacesServiceStatus.OK) {
+                if (pagination.hasNextPage){
+                    resultsArray.concat(pagination.nextPage());
                 }
-            else{
-                console.log("Problem routing distance from point "+ start + " to " + stop);
-                }
+            }
+            switch (term){
+                //case determines if the array in the constant hash object contains the term
+                //if it does it fills the corresponding array in the response hash object
+                //by concating resultsArray obtained by the Google Places API
+                case(contains(POI_CHOICES.nature, term)):
+                    possiblePOIS.nature = possiblePOIS.nature.concat(resultsArray);
+                    break;
+                case(contains(POI_CHOICES.food, term)):
+                    possiblePOIS.food = possiblePOIS.food.concat(resultsArray);
+                    break;
+                case(contains(POI_CHOICES.fun, term)):
+                    possiblePOIS.fun = possiblePOIS.fun.concat(resultsArray);
+                    break;
+                case(contains(POI_CHOICES.shop, term)):
+                    possiblePOIS.shop = possiblePOIS.shop.concat(resultsArray);
+                    break;
+                case(contains(POI_CHOICES.attraction, term)):
+                    possiblePOIS.attraction = possiblePOIS.attraction.concat(resultsArray);
+                    break;
+                case(contains(POI_CHOICES.culture, term)):
+                    possiblePOIS.culture = possiblePOIS.culture.concat(resultsArray);
+                    break;
+                case(contains(POI_CHOICES.religion, term)):
+                    possiblePOIS.religion = possiblePOIS.religion.concat(resultsArray);
+                    break;
+            }
+        }
+        //After 1 second to complete the query, calls either createItinerary or the dummy function
+        setTimeout(callBack,1000); 
+    }
+
+    function generateTerms(){
+        console.log("Generating terms.");
+        //iterates the usersPicks array
+        for(var i = 0; i<defaultPicks.length; i++){
+            var pick = defaultPicks[i];
+            //hashes into POI_CHOICES array by string in picks variable
+            var selections = POI_CHOICES[pick]; 
+            //random term from selections array is pushed into terms array 
+            terms.push(selections[Math.floor(Math.random() * selections.length)]);
+        }
+    }
+
+    //Post gathered itinerary items to the webpage
+    function postEvent(destination, type, destinationNumber){
+        var newItem = $("<div id='newEvent" + destinationNumber + "'>");
+        var title = $("<h5>").text("Destination " + destinationNumber + ": " + destination.name).appendTo(newItem);
+        var type = $("<h6>").text("Activity Type: " + type).appendTo(newItem);
+        var address = $("<h7 id='addressDest" + destinationNumber + "'>").text(destination.vicinity).appendTo(newItem);
+        $("#itineraryItems").append(newItem);
+        lastDestination = destination.vicinity;
+        newItem.append("<br>");
+        var travelDistance = $("<h7 id='trip" + destinationNumber + "'>").text("Travel Distance: ").appendTo(newItem);
+        $("#itineraryItems").append(newItem);
+    }
+
+    //function to gather distance between waypoints and update the itinerary based on traffix
+    function plotDistance(start, stop, tripID){
+        var service = new google.maps.DistanceMatrixService();
+        service.getDistanceMatrix(
+        {
+            origins: [start],
+            destinations: [stop],
+            travelMode: 'DRIVING',
+            //Options for transit
+            //transitOptions: TransitOptions,
+            //options for driving
+            drivingOptions: {
+                departureTime: new Date(Date.now()),
+                trafficModel: "bestguess"
+            },
+            unitSystem: google.maps.UnitSystem.IMPERIAL,
+            //boolean
+            avoidHighways: false,
+            avoidTolls: true,
+        }, callback);
+
+        function callback(response, status) {
+        // See Parsing the Results for
+        // the basics of a callback function.
+        if (status == google.maps.DistanceMatrixStatus.OK) {
+            $(tripID).text("Travel Distance: " + response.rows[0].elements[0].distance.text);
+            }
+        else{
+            console.log("Problem routing distance from point "+ start + " to " + stop);
             }
         }
     }
 
-    function generateWaypoint(location) {
-        var address = location;
-        geocoder.geocode( { 'address': address}, function(results, status) {
-          if (status == 'OK') {
-              var newPt = {
-                location:{
-                    lat: results[0].geometry.location.lat(),
-                    lng: results[0].geometry.location.lng()
-                }
-              };
-            waypnts.push(newPt);
-          } 
-          else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
+    function mapDestination(origin, destination, tripID){
+
+        //adjust the map view to the search location
+        if (origin != mapCenter){
+            origin = new google.maps.LatLng(origin.geometry.location.lat(),origin.geometry.location.lng());
+        }
+
+        //create and add markers to the map to show the destinations
+        var lat = destination.geometry.location.lat();
+        var long = destination.geometry.location.lng();
+        var latLng = new google.maps.LatLng(lat,long);
+        var marker = new google.maps.Marker({
+           position: latLng,
+            map: map
         });
+        markers.push(marker);
+
+        //add destination as a waypoint
+        var newPt = {
+            location:{
+                lat: destination.geometry.location.lat(),
+                lng: destination.geometry.location.lng()
+            }
+        }
+        
+        waypnts.push(newPt);
+        plotDistance(origin, latLng, tripID);
     }
 
+    function createItinerary(){
+
+        //itinerary number variable
+        var itineraryItem = 1;
+        var previousDestination = {};
+
+        for (var poiSet in possiblePOIS) {
+            var poiChoices = possiblePOIS[poiSet];
+            if(poiChoices.length >= 1){
+                
+                //Sort ratings from highest to lowest
+                poiChoices.sort(function(a, b){return b.rating-a.rating});
+
+                //grab a random choice from the top half of the choice list
+                var randomChoice = poiChoices[Math.floor(Math.random()*(poiChoices.length/2))];
+
+                //grabs the event type to list on the itinerary and posts the event to the page
+                var strType = poiSet.charAt(0).toUpperCase() + poiSet.slice(1);
+                postEvent(randomChoice, strType, itineraryItem);
+
+                //if this is the first item to plot, start from the center
+                //otherwise plot from the previous destination
+                if(itineraryItem === 1){
+                    mapDestination(mapCenter, randomChoice, "#trip"+itineraryItem);
+                }else{
+                    mapDestination(previousDestination, randomChoice, "#trip"+itineraryItem);
+                    //generateWaypoint($("#addressDest"+(i-1)).text());
+                }
+
+                //Prepares for the next waypoint mapping by setting the previous destination to the current choice
+                previousDestination = randomChoice;
+                //Move onto the next itinerary item
+                itineraryItem++;
+            }
+        };
+
+        setTimeout(routeItinerary, 2000);
+        
+    }
+
+    function gatherDestinations(){
+        //populates the terms array with picks from the user
+        generateTerms();
+        //initialize the Places api service
+        service = new google.maps.places.PlacesService(map);
+
+        //for each term in the pick set, find destinations for 
+        //that term then create an itinerary as a callback when done
+        for (var i = 0; i < terms.length; i++){
+            if (i === (terms.length - 1)){
+                findDestinations(terms[i], createItinerary);
+            }
+            else{
+                findDestinations(terms[i], dummy);
+            }
+        };
+    }
+
+    // Removes the markers from the map, but keeps them in the array.
+    function clearMarkers() {
+    setMapOnAll(null);
+    }
+    
     function routeItinerary(){
+        //Remove the placeholder markers
         clearMarkers();
+        waypnts.pop();
+        //route the itinerary starting with the origin 
+        //location and using the itinerary's middle destinations 
+        //as waypoints, and the end destination as the endpoint
         function calculateAndDisplayRoute(directionsService, directionsDisplay, _origin, _destination, _waypoints) {
+
             directionsService.route({
               origin: _origin,
               destination: _destination,
@@ -305,19 +337,15 @@
                 window.alert('Directions request failed due to ' + status);
               }
             });
-          }
-          calculateAndDisplayRoute(directionsService, directionsDisplay, mapCenter, $("#addressDest3").text(), waypnts);
+        }
+        console.log(lastDestination);
+        calculateAndDisplayRoute(directionsService, directionsDisplay, mapCenter, lastDestination, waypnts); //$("#addressDest3").text()
     }
 
     function setMapOnAll(map) {
         for (var i = 0; i < markers.length; i++) {
           markers[i].setMap(map);
         }
-      }
-
-      // Removes the markers from the map, but keeps them in the array.
-      function clearMarkers() {
-        setMapOnAll(null);
       }
 
 
