@@ -14,50 +14,126 @@
 </head>
 <body>
 
-    <div class="row">
-        <div class="col s12 m6" id="card">
-            <div class="cN/A transparent">
+    <div class="row" id="one">
+        <div class="col s12 m6" id="select">
+            <div class="N/A transparent">
             <div class="card-content white-text">
-                <span class="card-title">What are your interest?</span>
-                <div class="input-field col s12">  <!-- multiple answer select form -->
-                    <select multiple>
-                        <option value="" disabled selected>Choose your option</option>
-                        <option value="1">Hiking</option>
-                        <option value="2">Sightseeing</option>
-                        <option value="3">Shopping</option>
-                        <option value="3">Food/option>
-                    </select>
-                    <label>Choose as many as you like</label>
-                </div>
+                <div class="card-title center-align">What are your interest?</div>
+                <br/>
+                <br/>
+                <form action="#">
+                    <p>
+                    <label>
+                        <input type="checkbox" />
+                        <span>Hiking</span>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        <input type="checkbox" />
+                        <span>Sightseeing</span>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        <input type="checkbox" />
+                        <span>Shopping</span>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        <input type="checkbox" />
+                        <span>Food</span>
+                    </label>
+                    </p>
+                </form>
             </div>
             </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col s12 m6" id="card">
+
+    
+    
+    <!-- <div class="row" id="one">
+        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
+            <div class="card-panel red teal lighten-2">
+            <div class="card-content white-text center-align">
+                <span class="card-title">What are your interest?</span>
+                <select multiple>
+                    <option value="1">Hiking</option> 
+                    <option value="2">Sightseeing</option>
+                    <option value="3">Shopping</option>
+                    <option value="4">Food</option>
+                </select>
+                <label>Choose as many as you like</label>
+            </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row" id="two">
+        <div class="col s12 m6" id="select">
             <div class="N/A transparent">
             <div class="card-content white-text">
-                <span class="card-title">Distance willing to travel</span>
+                <div class="card-title center-align">How long will your trip be for?</div>
+                <br/>
+                <br/>
+                <form action="#">
+                    <p>
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>A few hours</span>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>Half a day</span>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>one day</span>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>Two days</span>
+                    </label>
+                    </p>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div class="row" id="two">
+        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
+            <div class="N/A transparent">
+            <div class="card-content white-text center-align">
+                <span class="card-title">How long will your trip be for?</span>
                 <div class="input-field col s12">
                     <select>
-                        <option value="" disabled selected>Choose your option</option>
+                        <option value="" disabled selected></option>
                         <option value="1">A few hours</option>
                         <option value="2">Half a day</option>
                         <option value="3">one day</option>
-                        <option value="3">Two days</option>
+                        <option value="4">Two days</option>
                     </select>
-                    <label>Materialize Select</label>
+                    <label>Choose one</label>
                 </div>
             </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
-    <div class="row">
-        <div class="col s12 m6" id="card">
+    <div class="row" id="three">
+        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
             <div class="N/A transparent">
-            <div class="card-content white-text">
+            <div class="card-content white-text center-align">
                 <span class="card-title">Distance willing to travel</span>
                 <div class="row">
                     <form class="col s12"> <!-- Text Area for Miles Wanting to travel -->
@@ -74,10 +150,10 @@
         </div>
     </div>
 
-    <div class="row">
-        <div class="col s12 m6" id="card">
+    <div class="row" id="four">
+        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
             <div class="N/A transparent">
-            <div class="card-content white-text">
+            <div class="card-content white-text center-align">
                 <span class="card-title">What zip code do you want to start your Wknd?</span>
                 <div class="row">
                     <form class="col s12"> <!-- text area for zip code -->
@@ -94,60 +170,9 @@
         </div>
     </div>
 
-    
-<!-- multiple answer select form -->
-    <!-- <div class="input-field col s12">
-        <select multiple>
-          <option value="" disabled selected>Choose your option</option>
-          <option value="1">Option 1</option>
-          <option value="2">Option 2</option>
-          <option value="3">Option 3</option>
-        </select>
-        <label>Materialize Multiple Select</label>
-      </div> -->
-
-<!-- Range Slider -->
-    <!-- <form action="#">
-    <p class="range-field">
-        <input type="range" id="test5" min="0" max="100" />
-    </p>
-    </form> -->
-
-<!-- Text Area for Miles Wanting to travel -->
-<!-- <div class="row">
-    <form class="col s12">
-        <div class="row">
-        <div class="input-field col s12">
-            <input type="text" class="numbers" value="" />
-            <label for="textarea1">Miles</label>
-        </div>
-        </div>
-    </form>
-</div>  -->
-
-<!-- text area for zip code -->
-<!-- <div class="row">
-    <form class="col s12">
-        <div class="row">
-        <div class="input-field col s12">
-            <input type="text" maxlength="5" class="numbers" value="" />
-            <label for="textarea1">Zip Code</label>
-        </div>
-        </div>
-    </form>
-</div>  -->
-
-
-<!-- <span>Float</span>
-<input type="text" name="numeric" class='allownumericwithdecimal'>
-<div>Numeric values only allowed  (With Decimal Point) </div>  -->
-
-
-<!-- <input type="text" class="numbers" value="" /> -->
-
-
-
-
+    <div class="col s10 offset-s1 center-align" id="btn">
+            <button class="btn waves-effect black hoverable" type="submit" name="action">Submit</button>
+    </div>
 
     <!--jQuery CDN https://developers.google.com/speed/libraries/#jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
