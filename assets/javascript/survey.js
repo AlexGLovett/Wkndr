@@ -9,9 +9,12 @@ $('.numbers').keypress(function(key) {
 
 
 window.onload = function() {
-    $("#two").hide();
-    $("#three").hide();
-    $("#four").hide();
+    $("#questionTwo").hide();
+    $("#questionThree").hide();
+    $("#questionFour").hide();
+    $("#questionFive").hide();
+    $("#msg").hide();
+    $("#btn2").hide();
 }
 
 var questionNum = 1;
@@ -19,17 +22,34 @@ $("#btn").click(function() {
     questionNum++
     switch(questionNum){
         case(2):
-        $("#one").hide();
-        $("#two").fadeIn();
+        $("#questionOne").hide();
+        $("#questionTwo").fadeIn();
         break;
         case(3):
-        $("#two").hide();
-        $("#three").fadeIn();
+        $("#questionTwo").hide();
+        $("#questionThree").fadeIn();
         break;
         case(4):
-        $("#three").hide();
-        $("#four").fadeIn();
+        $("#questionThree").hide();
+        $("#questionFour").fadeIn();
         break;
+        case(5):
+        $("#questionFour").hide();
+        $("#questionFive").fadeIn();
+        break;
+        case(6):
+        $("#questionFive").hide();
+        $("#btn").hide();
+        $("#msg").fadeIn();
+        $("#btn2").fadeIn();
+
+            var $this = $(this);
+            $this.toggleClass('btn');
+            if($this.hasClass('btn')){
+                $this.text('Submit');			
+            } else {
+                $this.text('test');
+            };
     }
 })
 

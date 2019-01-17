@@ -14,13 +14,14 @@
 </head>
 <body>
 
-    <div class="row" id="one">
+    <div class="row" id="questionOne">
         <div class="col s12 m6" id="select">
             <div class="N/A transparent">
             <div class="card-content white-text">
-                <div class="card-title center-align">What are your interest?</div>
+                <div class="card-title center-align"><h5>What are your interest?</h5></div>
                 <br/>
                 <br/>
+                <label>Choose as many as you like</label>
                 <form action="#">
                     <p>
                     <label>
@@ -52,31 +53,11 @@
         </div>
     </div>
 
-
-    
-    
-    <!-- <div class="row" id="one">
-        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
-            <div class="card-panel red teal lighten-2">
-            <div class="card-content white-text center-align">
-                <span class="card-title">What are your interest?</span>
-                <select multiple>
-                    <option value="1">Hiking</option> 
-                    <option value="2">Sightseeing</option>
-                    <option value="3">Shopping</option>
-                    <option value="4">Food</option>
-                </select>
-                <label>Choose as many as you like</label>
-            </div>
-            </div>
-        </div>
-    </div> -->
-
-    <div class="row" id="two">
+    <div class="row" id="questionTwo">
         <div class="col s12 m6" id="select">
             <div class="N/A transparent">
             <div class="card-content white-text">
-                <div class="card-title center-align">How long will your trip be for?</div>
+                <div class="card-title center-align"><h5>How long will your trip be for?</h5></div>
                 <br/>
                 <br/>
                 <form action="#">
@@ -110,31 +91,49 @@
         </div>
     </div>
 
-    <!-- <div class="row" id="two">
-        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
+    <div class="row" id="questionThree">
+        <div class="col s12 m6" id="select">
             <div class="N/A transparent">
-            <div class="card-content white-text center-align">
-                <span class="card-title">How long will your trip be for?</span>
-                <div class="input-field col s12">
-                    <select>
-                        <option value="" disabled selected></option>
-                        <option value="1">A few hours</option>
-                        <option value="2">Half a day</option>
-                        <option value="3">one day</option>
-                        <option value="4">Two days</option>
-                    </select>
-                    <label>Choose one</label>
-                </div>
+            <div class="card-content white-text">
+                <div class="card-title center-align"><h5>How much money are you willing to spend?</h5></div>
+                <br/>
+                <br/>
+                <form action="#">
+                    <p>
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>$</span>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>$$</span>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>$$$</span>
+                    </label>
+                    </p>
+                    <p>
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>$$$$</span>
+                    </label>
+                    </p>
+                </form>
             </div>
             </div>
         </div>
-    </div> -->
+    </div>
 
-    <div class="row" id="three">
+    <div class="row" id="questionFour">
         <div class="col s12 m6 center offset-l3 offset-m2" id="card">
             <div class="N/A transparent">
             <div class="card-content white-text center-align">
-                <span class="card-title">Distance willing to travel</span>
+                <span class="card-title"><h5>Distance willing to travel?</h5></span>
                 <div class="row">
                     <form class="col s12"> <!-- Text Area for Miles Wanting to travel -->
                         <div class="row">
@@ -150,11 +149,11 @@
         </div>
     </div>
 
-    <div class="row" id="four">
+    <div class="row" id="questionFive">
         <div class="col s12 m6 center offset-l3 offset-m2" id="card">
             <div class="N/A transparent">
             <div class="card-content white-text center-align">
-                <span class="card-title">What zip code do you want to start your Wknd?</span>
+                <span class="card-title"><h5>What zip code do you want to start your Wknd?</h5></span>
                 <div class="row">
                     <form class="col s12"> <!-- text area for zip code -->
                         <div class="row">
@@ -170,8 +169,24 @@
         </div>
     </div>
 
+    <div class="row" id="msg">
+        <div class="col s12 m6" id="select">
+            <div class="N/A transparent">
+            <div class="card-content white-text">
+                <span class="card-title center-align">WKNDR</span>
+                <p><h4>I am a very simple card. I am good at containing small bits of information.
+                I am convenient because I require little markup to use effectively.</h4></p>
+            </div>
+            </div>
+        </div>
+    </div>
+
     <div class="col s10 offset-s1 center-align" id="btn">
             <button class="btn waves-effect black hoverable" type="submit" name="action">Submit</button>
+    </div>
+
+    <div class="col s10 offset-s1 center-align" id="btn2">
+            <button class="btn waves-effect black hoverable" type="submit" name="action">WKNDR</button>
     </div>
 
     <!--jQuery CDN https://developers.google.com/speed/libraries/#jquery-->
