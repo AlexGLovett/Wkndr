@@ -11,7 +11,7 @@ $('.numbers').keypress(function(key) {
 // Allow unselecting all
 // the selector will match all input controls of type :checkbox
 // and attach a click event handler 
-$("input:checkbox").on('click', function() {
+/*$("input:checkbox").attr("name", "tripLength").on('click', function() {
     // in the handler, 'this' refers to the box clicked on
     var $box = $(this);
     if ($box.is(":checked")) {
@@ -25,7 +25,7 @@ $("input:checkbox").on('click', function() {
     } else {
       $box.prop("checked", false);
     }
-  });
+  });*/
 
 // When page is loaded
 window.onload = function() {
@@ -43,6 +43,7 @@ window.onload = function() {
 function survey() {
 var questionNum = 1;
 $("#btn").click(function() {
+    event.preventDefault();
     questionNum++
     switch(questionNum){
         case(2):
@@ -64,6 +65,8 @@ $("#btn").click(function() {
         $("#msg").fadeIn();
         $("#btn2").fadeIn();
         $("#btn3").fadeIn();
+
+        storeSurveyData();
         // $("#questionFour").hide();
         // $("#questionFive").fadeIn();
         // break;
@@ -87,4 +90,41 @@ $("#btn3").click(function() {
     $("#questionOne").fadeIn();
     $("#btn").fadeIn();
     survey();
-})
+});
+
+function storeSurveyData() {
+    var surveyObj = {
+        tripLength: $("#tripLength").val(),
+        location: $("#location").val(),
+        distance: $("#distance").val(),
+        types: []
+    };
+
+    /*
+    var tripLength = $("#tripLength").val();
+    var location = $("#location").val();
+    var distance = $("#distance").val();
+    var types = [];
+    */
+
+   /*var checkboxTripLength = document.getElementsByName("tripLength");  
+   for(var i = 0; i < checkboxTripLength.length; i++)  
+   {  
+           if(checkboxTripLength[i].checked)  
+                   surveyObj.tripLength = checkboxTripLength[i].attributes[3].nodeValue;  
+   }  */
+
+
+    var checkboxType = document.getElementsByName("types");  
+    for(var i = 0; i < checkboxType.length; i++)  
+    {  
+        if(checkboxType[i].checked) { 
+            surveyObj.types.push($(checkboxType[i]).attr("value"));  
+        }
+    }  
+
+    console.log(surveyObj);
+
+    var surveyData = JSON.stringify(surveyObj);
+    localStorage.setItem("survey", surveyData);
+}
