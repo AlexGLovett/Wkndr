@@ -10,55 +10,259 @@
     <!--Materlize google icons https://materializecss.com/icons.html-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <!--Local css stylesheet-->
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/survey.css" />
 </head>
 <body>
-    <nav>
-        <div class="nav-wrapper light-green darken-3">
-            <a href="#!" class="brand-logo"><i class="material-icons">cloud</i>Logo</a>
-                <ul class="right hide-on-med-and-down">
-                <li><a href="sass.html"><i class="material-icons">search</i></a></li>
-                <li><a href="badges.html"><i class="material-icons">view_module</i></a></li>
-                <li><a href="collapsible.html"><i class="material-icons">refresh</i></a></li>
-                <li><a href="mobile.html"><i class="material-icons">more_vert</i></a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <footer class="page-footer brown darken-4">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Footer Content</h5>
-                    <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
-                </div>
-
-                <div class="col l4 offset-l2 s12">
-                    <h5 class="white-text">Links</h5>
-                    <ul>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 3</a></li>
-                        <li><a class="grey-text text-lighten-3" href="#!">Link 4</a></li>
-                    </ul>
-                </div>
+    <div class="row" id="questionOne">
+        <div class="col s12 m6" id="select">
+            <div class="N/A transparent">
+            <div class="card-content white-text">
+                <div class="card-title center-align"><h5>What are your interest?</h5></div>
+                <br/>
+                <label id="grey">Choose as many as you like</label>
+                <br/>
+                <form action="#">
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Nature</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Amusement</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Nightlife</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Self-care</span>
+                    </label>
+                    </div>
+                    </p>
+                    </p>    
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Shopping</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Culture</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Attractions</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Food</span>
+                    </label>
+                    </div>
+                </form>
+            </div>
             </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container">
-                © 2014 Copyright Text
-                <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+
+    <div class="row" id="questionTwo">
+        <div class="col s12 m6" id="select">
+            <div class="N/A transparent">
+            <div class="card-content white-text">
+                <div class="card-title center-align"><h5>How long will your trip be for?</h5></div>
+                <br/>
+                <label id="grey">Choose one</label>
+                <br/>
+                <form action="#">
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>Half Day</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>                   
+                    </p>
+                    <div class="horizon">
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>One Night</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>Two Nights</span>
+                    </label>
+                    </div>
+                    </p>
+                </form>
+            </div>
             </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- <div class="row" id="questionThree">
+        <div class="col s12 m6" id="select">
+            <div class="N/A transparent">
+            <div class="card-content white-text">
+                <div class="card-title center-align"><h5>How much money are you willing to spend?</h5></div>
+                <br/>
+                <label id="grey">Choose one</label>
+                <br/>
+                <form action="#">
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>$</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>$$</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>$$$</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input name="group1" type="checkbox" />
+                        <span>$$$$</span>
+                    </label>
+                    </div>
+                    </p>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="row" id="questionFour">
+        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
+            <div class="N/A transparent">
+            <div class="card-content white-text center-align">
+                <span class="card-title"><h5>Distance willing to travel?</h5></span>
+                <label id="grey">Miles</label>
+                <br/>
+                <br/>
+                <form action="#">
+                    <p class="range-field">
+                        <input type="range" id="test5" min="10" max="500" />
+                    </p>
+                </form>  
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="questionFive">
+        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
+            <div class="N/A transparent">
+            <div class="card-content white-text center-align">
+                <span class="card-title"><h5>What zip code do you want to start your Wknd?</h5></span>
+                <div class="row">
+                    <form class="col s12"> <!-- text area for zip code -->
+                        <div class="row">
+                        <div class="input-field col s12"> 
+                            <input type="text" maxlength="5" class="numbers" value="" />
+                            <label for="textarea1">Zip Code</label>
+                        </div>
+                        </div>
+                    </form>
+                </div> 
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row" id="msg">
+        <div class="col s12 m6" id="select">
+            <div class="N/A transparent">
+            <div class="card-content white-text">
+                <span class="card-title center-align">WKNDR</span>
+                <p><h4>I am a very simple card. I am good at containing small bits of information.
+                I am convenient because I require little markup to use effectively.</h4></p>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col s10 offset-s1 center-align" id="btn">
+            <button class="btn waves-effect black hoverable" type="submit" name="action">Submit</button>
+    </div>
+
+    <div class="col s10 offset-s1 center-align" id="btn2">
+            <button class="btn waves-effect black hoverable" type="submit" name="action">WKNDR</button>
+    </div>
+
+    <div class="col s10 offset-s1 center-align" id="btn3">
+            <button class="btn waves-effect black hoverable" type="submit" name="action">Restart</button>
+    </div>
+
     <!--jQuery CDN https://developers.google.com/speed/libraries/#jquery-->
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Page JavaScript -->
+    <script src="assets/javascript/survey.js"></script>
     <!--Materialize JS https://materializecss.com/getting-started.html-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <!--Firebase link-->
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>  
     <!--Google Maps Javascript API + places API (async and defer allows browser to render page while API loads || callback=initMap runs function from mapp.js when api loaded-->
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc37ceea-riBN1RsG5S-EX83UVoK-7W58&libraries=places&callback=initMap"></script>
+
+    <!-- length in data/numbers form -->
+    <!-- <div class="row">
+        <form class="col s12">
+            <div class="row">
+            <div class="input-field col s12">
+                <input type="text" class="numbers" value="" />
+                <label for="textarea1">Miles</label>
+            </div>
+            </div>
+        </form>
+    </div> -->
 
 </body>
 </html>
