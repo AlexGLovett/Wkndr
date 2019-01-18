@@ -45,8 +45,8 @@
                 </div>
             </li>
 
-            <li class="sidenav-link"><a class="waves-effect" href="#">My Account</a></li>
-            <li class="sidenav-link"><a class="waves-effect" href="#">Back To Survey</a></li>
+            <li class="sidenav-link"><a class="waves-effect tooltipped" data-position="right" data-tooltip="Accounts coming soon!" href="#">My Account</a></li>
+            <li class="sidenav-link"><a class="waves-effect" href="index.html">Back To Survey</a></li>
 
             <form id="selectors">
 
@@ -89,7 +89,7 @@
                 <div class="row">
                     <div class="input-field col s3">
                         <a class="tooltipped" data-position="top" data-tooltip="Nature">
-                            <label for="nature">
+                            <label>
                                 <input type="checkbox" class="filled-in checkbox-green" name="types" value="nature" checked="checked" />
                                 <span><i class="fas fa-tree"></i></span>
                             </label>
@@ -172,9 +172,11 @@
     </header>
 
     <main>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
         <div class="container">
             <div class="row">
-                <div class="col s12 l9 offset-l3">
+                <div class="col s12">
                     <div class="card card-results z-depth-4" >
                         <div class="card-content">
                             <div class="responsive-img" id="map">
@@ -186,30 +188,18 @@
                                 </div>
                             </div>
 
-                            <div id="itineraryHolder">
-                                <h4>Itinerary</h4>
-
-                                <div class="row">
-                                    <!--Itinerary Selectors-->
-                                    <div class="col s12 m6 l3">
-                                        <p>fsdalfkj</p>
-                                    </div>
                                     <!--Placeholder Itinerary-->
-                                    <div class="col s12 m6 l9" id="itineraryItems">
-                                        <div id="newEvent1"><h5>Destination 1: Hard Labor Creek State Park</h5><h6>Activity Type: Nature</h6><h7 id="addressDest1">5 Hard Labor Creek Road, Rutledge</h7><br><h7 id="trip1">Travel Distance: 27.1 mi</h7></div><div id="newEvent2"><h5>Destination 2: Athens Bagel Company</h5><h6>Activity Type: Food</h6><h7 id="addressDest2">268 North Jackson Street, Athens</h7><br><h7 id="trip2">Travel Distance: 28.7 mi</h7></div><div id="newEvent3"><h5>Destination 3: GUESS Factory</h5><h6>Activity Type: Shop</h6><h7 id="addressDest3">800 Steven B Tanger Boulevard Space 1202, Commerce</h7><br><h7 id="trip3">Travel Distance: 23.9 mi</h7></div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="col s12" id="itineraryItems"></div>
 
-                            <div id="directions">Directions Placeholder</div>
+                            <div id="directions"></div>
 
-                            <div id="streetview">Streetview</div>
+                            <div id="streetview"></div>
                         </div>
 
                         <div class="card-tabs">
                             <ul class="tabs tabs-fixed-width">
                                 <li class="tab"><a class="active" href="#map"><i class="material-icons">map</i></a></li>
-                                <li class="tab"><a href="#itineraryHolder"><i class="material-icons">format_list_bulleted</i></a></li>
+                                <li class="tab"><a href="#itineraryItems"><i class="material-icons">format_list_bulleted</i></a></li>
                                 <li class="tab"><a href="#directions"><i class="material-icons">directions</i></a></li>
                                 <li class="tab"><a href="#streetview"><i class="material-icons">streetview</i></a></li>
                             </ul>
@@ -238,13 +228,12 @@
     <footer class="page-footer grey darken-4">
         <div class="container">
             <div class="row">
-                <!--Copyright-->
-                <div class="col s12 m6">
-                    <div class="footer-copyright">© 2019 Team Squad</div>
-                </div>
-                <!--Github Link-->
-                <div class="col s12 m6">
-                    <a class="grey-text text-lighten-4 right" href="https://github.com/AlexGLovett/Wkndr"><i class="fab fa-github"></i></a>
+                <div class="col s12">
+                <!--Social Links-->
+                    <div class="center">
+                        <a class="grey-text text-lighten-4" href="https://github.com/AlexGLovett/Wkndr"><i class="fab fa-github"></i></a>
+                        <a class="grey-text text-lighten-4" href="https://www.instagram.com/wkndrapp/"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -259,9 +248,9 @@
     <!--frontend local js file-->
     <script src="assets/javascript/frontend.js"></script>
     <!--map logic js file-->
-    <!--<script async src="assets/javascript/mapp.js"></script>-->
+    <script async src="assets/javascript/mapp.js"></script>
     <!--Google Maps Javascript API + places API (async and defer allows browser to render page while API loads || callback=initMap runs function from mapp.js when api loaded-->
-    <!--<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc37ceea-riBN1RsG5S-EX83UVoK-7W58&libraries=places&callback=initMap"></script>-->
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc37ceea-riBN1RsG5S-EX83UVoK-7W58&libraries=places&callback=initMap"></script>
 
 </body>
 </html>
