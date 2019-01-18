@@ -79,7 +79,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <p class="range-field">
-                            <input class="checkbox-green" type="range" id="distance" min="10" max="500" />
+                            <input class="checkbox-green" type="range" id="distance" step="5" min="10" max="500" />
                         </p>   
 
                         <label class="active" for="distance">Distance (miles)</label>
@@ -90,7 +90,7 @@
                     <div class="input-field col s3">
                         <a class="tooltipped" data-position="top" data-tooltip="Nature">
                             <label for="nature">
-                                <input type="checkbox" class="filled-in checkbox-green" id="nature" checked="checked" />
+                                <input type="checkbox" class="filled-in checkbox-green" name="types" value="nature" checked="checked" />
                                 <span><i class="fas fa-tree"></i></span>
                             </label> 
                         </a>
@@ -99,7 +99,7 @@
                     <div class="input-field col s3">
                         <a class="tooltipped" data-position="top" data-tooltip="Food">
                             <label>
-                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <input type="checkbox" class="filled-in checkbox-green" name="types" value="food" checked="checked" />
                                 <span><i class="fas fa-utensils"></i></span>
                             </label>
                         </a>
@@ -108,7 +108,7 @@
                     <div class="input-field col s3">
                         <a class="tooltipped" data-position="top" data-tooltip="Amusements">
                             <label>
-                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <input type="checkbox" class="filled-in checkbox-green" name="types" value="amusements" checked="checked" />
                                 <span><i class="fas fa-film"></i></span>
                             </label>
                         </a>
@@ -117,7 +117,7 @@
                     <div class="input-field col s3">
                         <a class="tooltipped" data-position="top" data-tooltip="Shopping">
                             <label>
-                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <input type="checkbox" class="filled-in checkbox-green" name="types" value="shopping" checked="checked" />
                                 <span><i class="fas fa-shopping-bag"></i></span>
                             </label>
                         </a>
@@ -128,7 +128,7 @@
                     <div class="input-field col s3">
                         <a class="tooltipped" data-position="top" data-tooltip="Attractions">
                             <label>
-                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <input type="checkbox" class="filled-in checkbox-green" name="types" value="attractions" checked="checked" />
                                 <span><i class="fas fa-archway"></i></span>
                             </label>
                         </a>
@@ -137,7 +137,7 @@
                     <div class="input-field col s3">
                         <a class="tooltipped" data-position="top" data-tooltip="Nightlife">
                             <label>
-                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <input type="checkbox" class="filled-in checkbox-green" name="types" value="nightlife" checked="checked" />
                                 <span><i class="fas fa-cocktail"></i></span>
                             </label>
                         </a>
@@ -146,7 +146,7 @@
                     <div class="input-field col s3">
                         <a class="tooltipped" data-position="top" data-tooltip="Culture">
                             <label>
-                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <input type="checkbox" class="filled-in checkbox-green" name="types" value="culture" checked="checked" />
                                 <span><i class="fas fa-landmark"></i></span>
                             </label>
                         </a>
@@ -155,14 +155,13 @@
                     <div class="input-field col s3">
                         <a class="tooltipped" data-position="top" data-tooltip="Self-Care">
                             <label>
-                                <input type="checkbox" class="filled-in checkbox-green" checked="checked" />
+                                <input type="checkbox" class="filled-in checkbox-green" name="types" value="self-care" checked="checked" />
                                 <span><i class="fas fa-hands-helping"></i></span>
                             </label>
                         </a>
                     </div>  
                 </div>
 
-                <!-- <a class="tooltipped right" data-position="top" data-tooltip="nature"><i class="far fa-question-circle"></i></a> -->
                 <div class="row">
                     <div class="col s12 center" id="plan-weekend-btn">
                         <button class="btn light-green darken-1 waves-effect" id="planWeekend">Plan Weekend</button>
