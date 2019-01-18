@@ -51,36 +51,33 @@
             <br><br>
 
             <div id="selectors">
+                
                 <div class="row">
                     <div class="input-field col s12 center-align">
                         <h5>Trip Settings</h5>
                     </div>
                 </div>
 
-                <div class="row" id="margin-zero">
+                <div class="row">
                     <div class="input-field col s12">
-                        <input id="destinationAmount" type="number" class="validate">
-                        <label class="active" for="destinationAmount">How many destinations?</label>
+                        <select id="tripLength">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="1">Half-Day</option>
+                            <option value="2">One Night</option>
+                            <option value="3">Two Nights</option>
+                        </select>
+
+                        <label for="tripLength">Length of Trip</label>
                     </div>
                 </div>
-
-                <div class="row" id="margin-zero">
-                    <div class="input-field col s12" id="margin-zero">
-                        <p class="range-field">
-                            <input class="checkbox-green" type="range" id="budget" min="0" max="1000" />
-                        </p>   
-
-                        <label class="active" for="test5">Budget ($)</label>
-                    </div>
-                </div>
-    
+        
                 <div class="row">
                     <div class="input-field col s12">
                         <p class="range-field">
-                            <input class="checkbox-green" type="range" id="range" min="10" max="500" />
+                            <input class="checkbox-green" type="range" id="distance" min="10" max="500" />
                         </p>   
 
-                        <label class="active" for="range">Distance (miles)</label>
+                        <label class="active" for="distance">Distance (miles)</label>
                     </div>
                 </div>
 
@@ -158,6 +155,13 @@
                             </label>
                         </a>
                     </div>  
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Zip Code" id="location" type="text" maxlength="5" class="validate">
+                        <label for="location">Home Location</label>
+                    </div>
                 </div>
                 <!-- <a class="tooltipped right" data-position="top" data-tooltip="nature"><i class="far fa-question-circle"></i></a> -->
                 <div class="row">

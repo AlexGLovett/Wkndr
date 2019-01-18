@@ -7,6 +7,8 @@ $(document).ready(function(){
         edge: 'left'
     });    
 
+    $('select').formSelect();
+
     // initializes tabs
     $('.tabs').tabs();
 

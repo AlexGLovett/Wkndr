@@ -29,26 +29,22 @@ nav {
     border-bottom: rgb(160, 159, 159) 1px solid;
 }
 
-.input-field {
+/*.input-field {
   margin-top: 0 !important;
   margin-bottom: 1rem !important;
-}
+}*/
 
-#margin-zero {
-  margin: 0 !important;
-}
-
-input[type=range]+.thumb.value {
+/*input[type=range]+.thumb.value {
   background-color: #8bc34a !important;
 }
 
 .checkbox-green[type="checkbox"].filled-in:checked + span:after{
   border: 2px solid #8bc34a;
   background-color: #8bc34a;
-}
+}*/
 
 #plan-weekend-btn {
-  margin-top: 5rem;
+  margin-top: 3rem;
 }
 
 .card-results {
@@ -57,7 +53,7 @@ input[type=range]+.thumb.value {
 }
 
 #map, #placeholdermap, #itineraryItems, #directions, #streetview {
-    height: 75vh;
+    height: 73vh;
     width: 100%;
     overflow: auto;
 }
