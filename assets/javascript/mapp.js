@@ -58,6 +58,19 @@
     var directionsService;
     var directionsDisplay;
 
+    /*
+    Retrieving from local storage
+    */
+    //get the data from local storage and parse to obj
+    var storedData = localStorage.getItem("survey");
+    var surveyData = JSON.parse(storedData);
+    //set survey variables
+    var terms = surveyData.types;
+    var tripLength = surveyData.tripLength;
+    var dist = surveyData.distance;
+    var loc = surveyData.location;
+    //
+
     function initMap() {
         
         var initialCenter = new google.maps.LatLng(	33.7490,-84.3880);
