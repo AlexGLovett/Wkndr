@@ -13,7 +13,10 @@ function createItinerary(){
 function selectDestination(searchTerm, itineraryItem){
     //itinerary number variable
     var previousDestination = {};
-    var poiChoices = possiblePOIS[searchTerm];
+    console.log(possiblePOIS[primeTerm]);
+    console.log(possiblePOIS);
+    setTimeout(function(){
+        var poiChoices = possiblePOIS[searchTerm];
         if(poiChoices.length >= 1){
             
             //Sort ratings from highest to lowest
@@ -23,7 +26,7 @@ function selectDestination(searchTerm, itineraryItem){
             var randomChoice = poiChoices[Math.floor(Math.random()*(poiChoices.length/2))];
 
             //grabs the event type to list on the itinerary and posts the event to the page
-            var strType = poiSet.charAt(0).toUpperCase() + poiSet.slice(1);
+            var strType = searchTerm.charAt(0).toUpperCase() + searchTerm.slice(1);
             postEvent(randomChoice, strType, itineraryItem);
 
             //if this is the first item to plot, start from the center
@@ -42,4 +45,5 @@ function selectDestination(searchTerm, itineraryItem){
         else{
             console.log("Couldn't find any results for the prime destination search.");
         }
+    },2000);
 }

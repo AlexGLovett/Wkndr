@@ -283,16 +283,9 @@
         plotDistance(origin, latLng, tripID);
     }
 
-    function createFirstCallback(){
-        console.log(possiblePOIS);
-        setTimeout(createFirst,20000);
-    }
-
     //Maps the first point so that the secondary points can be plotted in reference to it
     function createFirst(){
-        console.log(possiblePOIS);
-        selectDestination(primeTerm, 1);
-        gatherDestinations();
+        
     }
 
     function selectPrimeDestination(){
@@ -300,8 +293,10 @@
         //initialize the Places api service
         service = new google.maps.places.PlacesService(map);
 
-        findDestinations(primeTerm, primeDestination, createFirstCallback);
-
+        findDestinations(primeTerm, primeDestination, dummy);
+        //setTimeout(createFirst,11000);
+        selectDestination(primeTerm, 1);
+        gatherDestinations();
     }
 
     function gatherDestinations(){
