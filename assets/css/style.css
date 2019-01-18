@@ -38,10 +38,20 @@ nav {
   margin-bottom: 0.5rem !important;
 }
 
+/* Dropdown */
 .dropdown-content li > span {
   color: #8bc34a;
 }
 
+.select-wrapper input.select-dropdown {
+  border-bottom: 1px solid #8bc34a;
+}
+
+input.select-dropdown.dropdown-trigger {
+  color: black;
+  }
+
+/* Slider */
 input[type=range]::-webkit-slider-thumb {
   background-color: #8bc34a;
 }
@@ -54,7 +64,7 @@ input[type=range]::-ms-thumb {
 
 /***** These are to edit the thumb and the text inside the thumb *****/
 input[type=range] + .thumb {
-  background-color: #dedede;
+  background-color: white;
 }
 input[type=range] + .thumb.active .value {
   color: #8bc34a;
@@ -65,8 +75,43 @@ input[type=range] + .thumb.active .value {
   background-color: #8bc34a;
 }
 
-#plan-weekend-btn {
-  margin-top: 3rem;
+/* label underline focus color */ 
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #8bc34a;
+  box-shadow: 0 1px 0 0 #8bc34a;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly]) {
+  border-bottom: 1px solid #8bc34a;
+  box-shadow: 0 1px 0 0 #8bc34a;
+  color: black;
+}
+
+input[type=text]:not(.browser-default):focus:not([readonly])+label {
+  color: grey;
+}
+
+/* Home Location */
+input.valid[type=text]:not(.browser-default) {
+  border-bottom: 1px solid #8bc34a;
+  box-shadow: 0 1px 0 0 #8bc34a;
+}
+
+input[type=text]:not(.browser-default) {
+  border-bottom: 1px solid #8bc34a;
+}
+
+::placeholder {
+  color: black;
+  opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+ color: black;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+ color: black;
 }
 
 .card-results {
@@ -82,6 +127,10 @@ input[type=range] + .thumb.active .value {
 
 .material-icons {
     color: #8bc34a;
+}
+
+#plan-weekend-btn {
+  margin-top: 3rem;
 }
 
 /* styling for itinerary items */
