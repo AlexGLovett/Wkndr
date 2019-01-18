@@ -48,9 +48,7 @@
             <li class="sidenav-link"><a class="waves-effect" href="#">My Account</a></li>
             <li class="sidenav-link"><a class="waves-effect" href="#">Back To Survey</a></li>
 
-            <br><br>
-
-            <div id="selectors">
+            <form id="selectors">
                 
                 <div class="row">
                     <div class="input-field col s12 center-align">
@@ -68,6 +66,13 @@
                         </select>
 
                         <label for="tripLength">Length of Trip</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input placeholder="Zip Code" id="location" type="text" maxlength="5" class="validate">
+                        <label for="location">Home Location</label>
                     </div>
                 </div>
         
@@ -157,19 +162,13 @@
                     </div>  
                 </div>
 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="Zip Code" id="location" type="text" maxlength="5" class="validate">
-                        <label for="location">Home Location</label>
-                    </div>
-                </div>
                 <!-- <a class="tooltipped right" data-position="top" data-tooltip="nature"><i class="far fa-question-circle"></i></a> -->
                 <div class="row">
                     <div class="col s12 center" id="plan-weekend-btn">
-                        <button class="btn green waves-effect">Plan Weekend</button>
+                        <button class="btn light-green darken-1 waves-effect" id="planWeekend">Plan Weekend</button>
                     </div>
                 </div>    
-            </div>
+            </form>
         </ul>
     </header>
 

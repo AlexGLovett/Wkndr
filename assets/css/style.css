@@ -29,19 +29,41 @@ nav {
     border-bottom: rgb(160, 159, 159) 1px solid;
 }
 
-/*.input-field {
-  margin-top: 0 !important;
-  margin-bottom: 1rem !important;
-}*/
+#selectors{
+  margin-top: 2rem;
+}
 
-/*input[type=range]+.thumb.value {
-  background-color: #8bc34a !important;
+.input-field {
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+}
+
+.dropdown-content li > span {
+  color: #8bc34a;
+}
+
+input[type=range]::-webkit-slider-thumb {
+  background-color: #8bc34a;
+}
+input[type=range]::-moz-range-thumb {
+  background-color: #8bc34a;
+}
+input[type=range]::-ms-thumb {
+  background-color: #8bc34a;
+}
+
+/***** These are to edit the thumb and the text inside the thumb *****/
+input[type=range] + .thumb {
+  background-color: #dedede;
+}
+input[type=range] + .thumb.active .value {
+  color: #8bc34a;
 }
 
 .checkbox-green[type="checkbox"].filled-in:checked + span:after{
   border: 2px solid #8bc34a;
   background-color: #8bc34a;
-}*/
+}
 
 #plan-weekend-btn {
   margin-top: 3rem;
