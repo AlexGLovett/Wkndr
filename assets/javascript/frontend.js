@@ -20,15 +20,29 @@ $(document).ready(function(){
 $("#planWeekend").on("click", function(){
     event.preventDefault();
 
+    var surveyObj = {
+        tripLength: $("#tripLength").val(),
+        location: $("#location").val(),
+        distance: $("#distance").val(),
+        types: []
+    };
+
+    /*
     var tripLength = $("#tripLength").val();
     var location = $("#location").val();
     var distance = $("#distance").val();
-    var types = $("input[type='checkbox']").val();
+    var types = [];
+    */
 
-    var surveyData = [tripLength, location, distance, types];
+    var checkboxes = document.getElementsByName("types");  
+    for(var i = 0; i < checkboxes.length; i++)  
+    {  
+            if(checkboxes[i].checked)  
+                    surveyObj.types.push(checkboxes[i].attributes[3].nodeValue);  
+    }  
 
-    console.log(surveyData);
+    console.log(surveyObj);
 
-    //var surveyData = JSON.stringify(surveyObj);
-    //localStorage.setItem("survey", surveyData);
+    var surveyData = JSON.stringify(surveyObj);
+    localStorage.setItem("survey", surveyData);
 });
