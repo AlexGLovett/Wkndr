@@ -1,49 +1,10 @@
 $(document).ready(function(){
     $('select').formSelect();
-  });
-
+});
 
 $('.numbers').keypress(function(key) {
     if(key.charCode < 48 || key.charCode > 57) return false;
 });
-
-
-window.onload = function() {
-    $("#questionTwo").hide();
-    $("#questionThree").hide();
-    $("#questionFour").hide();
-    $("#questionFive").hide();
-    $("#msg").hide();
-    $("#btn2").hide();
-}
-
-var questionNum = 1;
-$("#btn").click(function() {
-    questionNum++
-    switch(questionNum){
-        case(2):
-        $("#questionOne").hide();
-        $("#questionTwo").fadeIn();
-        break;
-        case(3):
-        $("#questionTwo").hide();
-        $("#questionThree").fadeIn();
-        break;
-        case(4):
-        $("#questionThree").hide();
-        $("#questionFour").fadeIn();
-        break;
-        case(5):
-        $("#questionFour").hide();
-        $("#questionFive").fadeIn();
-        break;
-        case(6):
-        $("#questionFive").hide();
-        $("#btn").hide();
-        $("#msg").fadeIn();
-        $("#btn2").fadeIn();
-    }
-})
 
 // Allow grouping like Radio buttons
 // Act like Radio
@@ -65,3 +26,65 @@ $("input:checkbox").on('click', function() {
       $box.prop("checked", false);
     }
   });
+
+// When page is loaded
+window.onload = function() {
+    $("#questionTwo").hide();
+    // $("#questionThree").hide();
+    $("#questionFour").hide();
+    $("#questionFive").hide();
+    $("#msg").hide();
+    $("#btn2").hide();
+    $("#btn3").hide();
+    survey();
+}
+
+// When submit button is clicked fade in the next questions
+function survey() {
+var questionNum = 1;
+$("#btn").click(function() {
+    questionNum++
+    switch(questionNum){
+        case(2):
+        $("#questionOne").hide();
+        $("#questionTwo").fadeIn();
+        break;
+        case(3):
+        $("#questionTwo").hide();
+        // $("#questionThree").fadeIn();
+        $("#questionFour").fadeIn();
+        break;
+        case(4):
+        $("#questionFour").hide();
+        $("#questionFive").fadeIn();
+        break;
+        case(5):
+        $("#questionFive").hide();
+        $("#btn").hide();
+        $("#msg").fadeIn();
+        $("#btn2").fadeIn();
+        $("#btn3").fadeIn();
+        // $("#questionFour").hide();
+        // $("#questionFive").fadeIn();
+        // break;
+        // case(6):
+        // $("#questionFive").hide();
+        // $("#btn").hide();
+        // $("#msg").fadeIn();
+        // $("#btn2").fadeIn();
+    }
+})
+}
+
+$("#btn3").click(function() {
+    $("#questionTwo").hide();
+    // $("#questionThree").hide();
+    $("#questionFour").hide();
+    $("#questionFive").hide();
+    $("#msg").hide();
+    $("#btn2").hide();
+    $("#btn3").hide();
+    $("#questionOne").fadeIn();
+    $("#btn").fadeIn();
+    survey();
+})

@@ -27,7 +27,7 @@
                     <div class="horizon">
                     <label>
                         <input type="checkbox" />
-                        <span>Hiking</span>
+                        <span>Nature</span>
                     </label>
                     </div>
                     </p>
@@ -35,11 +35,27 @@
                     <div class="horizon">
                     <label>
                         <input type="checkbox" />
-                        <span>Sightseeing</span>
+                        <span>Amusement</span>
                     </label>
                     </div>
                     </p>
                     <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Nightlife</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Self-care</span>
+                    </label>
+                    </div>
+                    </p>
+                    </p>    
                     <div class="horizon">
                     <label>
                         <input type="checkbox" />
@@ -51,10 +67,25 @@
                     <div class="horizon">
                     <label>
                         <input type="checkbox" />
-                        <span>Food</span>
+                        <span>Culture</span>
                     </label>
                     </div>
                     </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Attractions</span>
+                    </label>
+                    </div>
+                    </p>
+                    <p>
+                    <div class="horizon">
+                    <label>
+                        <input type="checkbox" />
+                        <span>Food</span>
+                    </label>
+                    </div>
                 </form>
             </div>
             </div>
@@ -74,7 +105,7 @@
                     <div class="horizon">
                     <label>
                         <input name="group1" type="checkbox" />
-                        <span>A few hours</span>
+                        <span>Half Day</span>
                     </label>
                     </div>
                     </p>
@@ -83,7 +114,7 @@
                     <div class="horizon">
                     <label>
                         <input name="group1" type="checkbox" />
-                        <span>Half a day</span>
+                        <span>One Night</span>
                     </label>
                     </div>
                     </p>
@@ -91,15 +122,7 @@
                     <div class="horizon">
                     <label>
                         <input name="group1" type="checkbox" />
-                        <span>one day</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input name="group1" type="checkbox" />
-                        <span>Two days</span>
+                        <span>Two Nights</span>
                     </label>
                     </div>
                     </p>
@@ -109,7 +132,7 @@
         </div>
     </div>
 
-    <div class="row" id="questionThree">
+    <!-- <div class="row" id="questionThree">
         <div class="col s12 m6" id="select">
             <div class="N/A transparent">
             <div class="card-content white-text">
@@ -154,23 +177,21 @@
             </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div class="row" id="questionFour">
         <div class="col s12 m6 center offset-l3 offset-m2" id="card">
             <div class="N/A transparent">
             <div class="card-content white-text center-align">
                 <span class="card-title"><h5>Distance willing to travel?</h5></span>
-                <div class="row">
-                    <form class="col s12"> <!-- Text Area for Miles Wanting to travel -->
-                        <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" class="numbers" value="" />
-                            <label for="textarea1">Miles</label>
-                        </div>
-                        </div>
-                    </form>
-                </div> 
+                <label id="grey">Miles</label>
+                <br/>
+                <br/>
+                <form action="#">
+                    <p class="range-field">
+                        <input type="range" id="test5" min="10" max="500" />
+                    </p>
+                </form>  
             </div>
             </div>
         </div>
@@ -216,6 +237,10 @@
             <button class="btn waves-effect black hoverable" type="submit" name="action">WKNDR</button>
     </div>
 
+    <div class="col s10 offset-s1 center-align" id="btn3">
+            <button class="btn waves-effect black hoverable" type="submit" name="action">Restart</button>
+    </div>
+
     <!--jQuery CDN https://developers.google.com/speed/libraries/#jquery-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- Page JavaScript -->
@@ -226,6 +251,18 @@
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>  
     <!--Google Maps Javascript API + places API (async and defer allows browser to render page while API loads || callback=initMap runs function from mapp.js when api loaded-->
     <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc37ceea-riBN1RsG5S-EX83UVoK-7W58&libraries=places&callback=initMap"></script>
+
+    <!-- length in data/numbers form -->
+    <!-- <div class="row">
+        <form class="col s12">
+            <div class="row">
+            <div class="input-field col s12">
+                <input type="text" class="numbers" value="" />
+                <label for="textarea1">Miles</label>
+            </div>
+            </div>
+        </form>
+    </div> -->
 
 </body>
 </html>
