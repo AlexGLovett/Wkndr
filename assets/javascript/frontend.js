@@ -18,10 +18,12 @@ $(document).ready(function(){
 });
 
 $("#planWeekend").on("click", function(){
-    var tripLength = $("#tripLength").children("#option:selected").val();
+    event.preventDefault();
+
+    var tripLength = $("#tripLength").val();
     var location = $("#location").val();
-    var distance;
-    var types = $('.checkbox-green:checked').val();
+    var distance = $("#distance").val();
+    var types = $("input[type='checkbox']").val();
 
     var surveyData = [tripLength, location, distance, types];
 
@@ -30,4 +32,3 @@ $("#planWeekend").on("click", function(){
     //var surveyData = JSON.stringify(surveyObj);
     //localStorage.setItem("survey", surveyData);
 });
-
