@@ -18,7 +18,7 @@
         <div class="col s12 m6" id="select">
             <div class="N/A transparent">
             <div class="card-content white-text">
-                <div class="card-title center-align"><h5>What are your interest?</h5></div>
+                <div class="card-title center-align"><h5>What are your interests?</h5></div>
                 <br/>
                 <label id="grey">Choose as many as you like</label>
                 <br/>
@@ -26,7 +26,7 @@
                     <p>
                     <div class="horizon">
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox" name="types" value="nature" />
                         <span>Nature</span>
                     </label>
                     </div>
@@ -34,7 +34,7 @@
                     <p>
                     <div class="horizon">
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox" name="types" value="amusement"/>
                         <span>Amusement</span>
                     </label>
                     </div>
@@ -42,7 +42,7 @@
                     <p>
                     <div class="horizon">
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox" name="types" value="nightlife"/>
                         <span>Nightlife</span>
                     </label>
                     </div>
@@ -50,7 +50,7 @@
                     <p>
                     <div class="horizon">
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox" name="types" value="self-care"/>
                         <span>Self-care</span>
                     </label>
                     </div>
@@ -58,7 +58,7 @@
                     </p>    
                     <div class="horizon">
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox" name="types" value="shopping"/>
                         <span>Shopping</span>
                     </label>
                     </div>
@@ -66,7 +66,7 @@
                     <p>
                     <div class="horizon">
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox" name="types" value="culture"/>
                         <span>Culture</span>
                     </label>
                     </div>
@@ -74,7 +74,7 @@
                     <p>
                     <div class="horizon">
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox" name="types" value="attractions"/>
                         <span>Attractions</span>
                     </label>
                     </div>
@@ -82,7 +82,7 @@
                     <p>
                     <div class="horizon">
                     <label>
-                        <input type="checkbox" />
+                        <input type="checkbox" name="types" value="food"/>
                         <span>Food</span>
                     </label>
                     </div>
@@ -96,15 +96,25 @@
         <div class="col s12 m6" id="select">
             <div class="N/A transparent">
             <div class="card-content white-text">
-                <div class="card-title center-align"><h5>How long will your trip be for?</h5></div>
+                <div class="card-title center-align"><h5>How long will you be traveling?</h5></div>
                 <br/>
-                <label id="grey">Choose one</label>
                 <br/>
-                <form action="#">
+
+                <div class="input-field col s12">
+                        <select id="tripLength">
+                            <option value="" disabled selected>Choose</option>
+                            <option value="1">Half-Day</option>
+                            <option value="2">One Night</option>
+                            <option value="3">Two Nights</option>
+                        </select>
+
+                    </div>
+
+                <!--<form action="#">
                     <p>
                     <div class="horizon">
                     <label>
-                        <input name="group1" type="checkbox" />
+                        <input name="tripLength" type="checkbox" />
                         <span>Half Day</span>
                     </label>
                     </div>
@@ -113,7 +123,7 @@
                     </p>
                     <div class="horizon">
                     <label>
-                        <input name="group1" type="checkbox" />
+                        <input name="tripLength" type="checkbox" />
                         <span>One Night</span>
                     </label>
                     </div>
@@ -121,12 +131,12 @@
                     <p>
                     <div class="horizon">
                     <label>
-                        <input name="group1" type="checkbox" />
+                        <input name="tripLength" type="checkbox" />
                         <span>Two Nights</span>
                     </label>
                     </div>
                     </p>
-                </form>
+                </form> -->
             </div>
             </div>
         </div>
@@ -183,13 +193,13 @@
         <div class="col s12 m6 center offset-l3 offset-m2" id="card">
             <div class="N/A transparent">
             <div class="card-content white-text center-align">
-                <span class="card-title"><h5>Distance willing to travel?</h5></span>
+                <span class="card-title"><h5>How far are you willing to travel?</h5></span>
                 <label id="grey">Miles</label>
                 <br/>
                 <br/>
                 <form action="#">
                     <p class="range-field">
-                        <input type="range" id="test5" min="10" max="500" />
+                        <input type="range" id="distance" min="10" max="500" step="10" />
                     </p>
                 </form>  
             </div>
@@ -201,13 +211,13 @@
         <div class="col s12 m6 center offset-l3 offset-m2" id="card">
             <div class="N/A transparent">
             <div class="card-content white-text center-align">
-                <span class="card-title"><h5>What zip code do you want to start your Wknd?</h5></span>
+                <span class="card-title"><h5>What is your zip code?</h5></span>
                 <div class="row">
                     <form class="col s12"> <!-- text area for zip code -->
                         <div class="row">
                         <div class="input-field col s12"> 
-                            <input type="text" maxlength="5" class="numbers" value="" />
-                            <label for="textarea1">Zip Code</label>
+                            <input type="text" maxlength="5" class="numbers" id="location"/>
+                            <label for="textarea1">5-digit zip code</label>
                         </div>
                         </div>
                     </form>
@@ -222,8 +232,7 @@
             <div class="N/A transparent">
             <div class="card-content white-text">
                 <span class="card-title center-align">WKNDR</span>
-                <p><h4>I am a very simple card. I am good at containing small bits of information.
-                I am convenient because I require little markup to use effectively.</h4></p>
+                <p><h4>Thank you for that information. Click below to plan your weekend, or go back and change your answers.</h4></p>
             </div>
             </div>
         </div>
@@ -234,7 +243,7 @@
     </div>
 
     <div class="col s10 offset-s1 center-align" id="btn2">
-            <button class="btn waves-effect black hoverable" type="submit" name="action">WKNDR</button>
+            <a href="results.html"><button class="btn waves-effect black hoverable" type="submit" name="action">Plan Weekend</button></a>
     </div>
 
     <div class="col s10 offset-s1 center-align" id="btn3">
@@ -250,7 +259,7 @@
     <!--Firebase link-->
     <script src="https://www.gstatic.com/firebasejs/5.7.3/firebase.js"></script>  
     <!--Google Maps Javascript API + places API (async and defer allows browser to render page while API loads || callback=initMap runs function from mapp.js when api loaded-->
-    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc37ceea-riBN1RsG5S-EX83UVoK-7W58&libraries=places&callback=initMap"></script>
+    <!--<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAc37ceea-riBN1RsG5S-EX83UVoK-7W58&libraries=places&callback=initMap"></script>-->
 
     <!-- length in data/numbers form -->
     <!-- <div class="row">
