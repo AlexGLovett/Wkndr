@@ -1,4 +1,5 @@
 $(document).ready(function(){
+
     // initializes sidenav and adds options
     var elem = document.querySelector('.sidenav');
     var instance = M.Sidenav.init(elem, {

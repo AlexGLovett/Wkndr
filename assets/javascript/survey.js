@@ -42,7 +42,7 @@ window.onload = function() {
 // When submit button is clicked fade in the next questions
 function survey() {
 var questionNum = 1;
-$("#btn").click(function() {
+$("#btn").click(function(event) {
     event.preventDefault();
     questionNum++
     switch(questionNum){
