@@ -107,7 +107,7 @@
     }
 
     //When the search button is clicked, begin searching for selected terms within a distance of the origin point (zipcode)
-    $(document).on('click',"#searchTestBtn",function() {
+    $(document).ready(function() {
 
         console.log("Initiating Map & Search");
 
@@ -120,7 +120,7 @@
         geocoder = new google.maps.Geocoder();
 
         //Find the input search address, display it on the map, and perform a Places search within the area as a callback function
-        codeAddress($("#searchTest").val(),selectPrimeDestination);
+        codeAddress(loc,selectPrimeDestination);
     });
 
     function codeAddress(location, callback) {
@@ -261,7 +261,6 @@
     }
 
     function mapDestination(origin, destination, tripID){
-
         //create and add markers to the map to show the destinations
         var lat = destination.geometry.location.lat();
         var long = destination.geometry.location.lng();
@@ -271,25 +270,28 @@
             map: map
         });
         markers.push(marker);
-
-        //adjust the map view to the search location
-        if (origin != mapCenter){
-            origin = new google.maps.LatLng(origin.geometry.location.lat(),origin.geometry.location.lng());
-        }
-        else{
-            primeDestinationAddres = latLng;
-        }
-
-        //add destination as a waypoint
-        var newPt = {
-            location:{
-                lat: destination.geometry.location.lat(),
-                lng: destination.geometry.location.lng()
+        setTimeout(function(){
+            //adjust the map view to the search location
+            if (origin != mapCenter){
+                origin = new google.maps.LatLng(origin.geometry.location.lat(),origin.geometry.location.lng());
             }
-        }
+            else{
+                primeDestinationAddres = latLng;
+            }
+    
+            //add destination as a waypoint
+            var newPt = {
+                location:{
+                    lat: destination.geometry.location.lat(),
+                    lng: destination.geometry.location.lng()
+                }
+            }
+            
+            waypnts.push(newPt);
+            console.log(waypnts);
+            plotDistance(origin, latLng, tripID);
+        },1000);
         
-        waypnts.push(newPt);
-        plotDistance(origin, latLng, tripID);
     }
 
     //Maps the first point so that the secondary points can be plotted in reference to it
@@ -328,7 +330,6 @@
     function routeItinerary(){
         //Remove the placeholder markers
         clearMarkers();
-        waypnts.pop();
         //route the itinerary starting with the origin 
         //location and using the itinerary's middle destinations 
         //as waypoints, and the end destination as the endpoint
@@ -347,8 +348,11 @@
               }
             });
         }
-        console.log(lastDestination);
-        calculateAndDisplayRoute(directionsService, directionsDisplay, mapCenter, lastDestination, waypnts); //$("#addressDest3").text()
+        setTimeout(function(){
+            waypnts.pop();
+            calculateAndDisplayRoute(directionsService, directionsDisplay, mapCenter, lastDestination, waypnts);
+        },2000);
+         //$("#addressDest3").text()
     }
 
     function setMapOnAll(map) {

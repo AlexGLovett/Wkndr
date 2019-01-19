@@ -9,11 +9,10 @@ function createItinerary(){
     setTimeout(routeItinerary, 2000);
 }
 
+var previousDestination = {};
+
 function selectDestination(searchTerm, itineraryItem){
     //itinerary number variable
-    var previousDestination = {};
-    console.log(possiblePOIS[primeTerm]);
-    console.log(possiblePOIS);
     setTimeout(function(){
         var poiChoices = possiblePOIS[searchTerm];
         if(poiChoices.length >= 1){
@@ -32,13 +31,19 @@ function selectDestination(searchTerm, itineraryItem){
             //otherwise plot from the previous destination
             if(itineraryItem === 1){
                 mapDestination(mapCenter, randomChoice, "#trip"+itineraryItem);
-            }else{
+                console.log(previousDestination);
+                previousDestination = randomChoice;
+                console.log(previousDestination);
+            }
+            else{
                 mapDestination(previousDestination, randomChoice, "#trip"+itineraryItem);
+                console.log(previousDestination);
+                previousDestination = randomChoice;
                 //generateWaypoint($("#addressDest"+(i-1)).text());
             }
 
             //Prepares for the next waypoint mapping by setting the previous destination to the current choice
-            previousDestination = randomChoice;
+            //previousDestination = randomChoice;
             //Move onto the next itinerary item
         }
         else{
