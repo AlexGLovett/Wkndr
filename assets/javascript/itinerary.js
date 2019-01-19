@@ -2,6 +2,7 @@ function createItinerary(){
 
     var itineraryItem = 2;
     for (var poiSet in possiblePOIS) {
+        console.log(poiSet);
         selectDestination(poiSet, itineraryItem);
         itineraryItem++;
     };
@@ -31,13 +32,10 @@ function selectDestination(searchTerm, itineraryItem){
             //otherwise plot from the previous destination
             if(itineraryItem === 1){
                 mapDestination(mapCenter, randomChoice, "#trip"+itineraryItem);
-                console.log(previousDestination);
                 previousDestination = randomChoice;
-                console.log(previousDestination);
             }
             else{
                 mapDestination(previousDestination, randomChoice, "#trip"+itineraryItem);
-                console.log(previousDestination);
                 previousDestination = randomChoice;
                 //generateWaypoint($("#addressDest"+(i-1)).text());
             }
@@ -47,7 +45,7 @@ function selectDestination(searchTerm, itineraryItem){
             //Move onto the next itinerary item
         }
         else{
-            console.log("Couldn't find any results for the prime destination search.");
+            //console.log("Couldn't find any results for the destination search.");
         }
     },2000);
 }

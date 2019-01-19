@@ -15,32 +15,39 @@
     var infowindow;
     var geocoder;
     var mapCenter;
-    var primeTerm = "nature";
+    var primeTerm;
     var primeDestination = true;
     var primeDestinationAddres;
     var eventStructure = {
-        "friAft": {eventCount:4,foodCount:1},
-        "friday": {eventCount:8,foodCount:3},
-        "saturday": {eventCount:8,foodCount:3},
-        "sunday": {eventCount:4,foodCount:2}
+        "1": {eventCount:4,foodCount:2},
+        "2": {eventCount:8,foodCount:3},
+        "3": {eventCount:8,foodCount:3}
     }
     var POI_CHOICES = { //constant representing the possible categories to select and the types in them
         "nature": ["park"],
         "food": ["bakery","café","meal_takeaway","restaurant"],
-        "fun": ["amusement_park","bowling_alley","movie_theater"],
-        "shop": ["clothing_store","department_store","shoe_store","shopping_mall"],
-        "attraction": ["aquarium","zoo","casino"],  //available in settings
-        //"drinks": ["bar","liquor_store","night_club"], //comment out until we get a way to verify age
+        "amusements": ["amusement_park","bowling_alley","movie_theater"],
+        "shopping": ["clothing_store","department_store","shoe_store","shopping_mall"],
+        "attractions": ["aquarium","zoo","casino"],  //available in settings
+        "nightlife": ["night_club", "bar", "liqour_store"], //comment out until we get a way to verify age
         "culture": ["art_gallery","library","museum","book_store"],  //available in settings
         "religion": ["synagogue","church","mosque","hindu_temple"],  //available in settings
-        //"self-care": ["hair_care","spa"]  //what do you guys think?
+        "self-care": ["hair_care","spa"] //what do you guys think?
     }
     //default picks
-    var defaultPicks = ["nature", "food", "shop"]; 
+    var defaultPicks = ["nature", "food", "shopping"]; 
     //hash of array to hold places responses
-    var possiblePOIS = { "nature": [], "food": [], "fun": [], "shop": [],
-                        "attraction": [], "drinks": [], "culture": [], "religion": [],  //available in settings
-                        "self-care": [] }
+    var possiblePOIS = {         
+        "nature": [],
+        "food": [],
+        //"amusements": [],
+        "shopping": [],
+        //"attractions": [],  //available in settings
+        //"nightlife": [], //comment out until we get a way to verify age
+        //"culture": [],  //available in settings
+        //"religion": [],  //available in settings
+        //"self-care": [] //what do you guys think? 
+    }
     var terms = [];
     var waypnts = [];
     var markers = [];
@@ -65,7 +72,7 @@
     var tripLength = surveyData.tripLength;
     var dist = surveyData.distance;
     var loc = surveyData.location;
-
+    console.log(tripLength);
     function initMap() {
         
         //on map creation, center on Atlanta via lat-long coordinates
@@ -88,7 +95,8 @@
             //hashes into POI_CHOICES array by string in picks variable
             var selections = POI_CHOICES[pick]; 
             //random term from selections array is pushed into terms array 
-            terms.push(selections[Math.floor(Math.random() * selections.length)]);
+            terms.push(selections[Math.floor(Math.random() * selections.length)]
+            );
         }
     }
 
@@ -101,13 +109,23 @@
         initMap();
         waypnts = [];
         primeDestination = true;
-        possiblePOIS = { "nature": [], "food": [], "fun": [], "shop": [], 
-                        "attraction": [], "adult": [], "culture": [], "religion": [],
-                        "self-care": [] }
+        possiblePOIS = { 
+            "nature": [],
+            "food": [],
+            //"amusement": [],
+            "shopping": [],
+            //"attractions": [], 
+            //"adult": [], 
+            //"culture": [], 
+            //"religion": [],
+            //"self-care": [] 
+        }
     }
 
     //When the search button is clicked, begin searching for selected terms within a distance of the origin point (zipcode)
     $(document).ready(function() {
+
+        primeTerm = terms[0];
 
         console.log("Initiating Map & Search");
 
@@ -153,7 +171,9 @@
     }
 
     function findDestinations(term, primeDestination, callBack){
+        console.log(primeDestination);
         if (primeDestination == true){
+            primeDestination = false;
             var request = {
                 location: mapCenter,
                 radius: '106934', // 0.000621371 miles =  1 meter
@@ -161,7 +181,7 @@
                 type: [term],
                 fields: ['formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
             };
-            primeDestination = false;
+            
             terms.splice(terms.indexOf(term),1);
         }
         else{
@@ -193,14 +213,14 @@
                 case(contains(POI_CHOICES.food, term)):
                     possiblePOIS.food = possiblePOIS.food.concat(resultsArray);
                     break;
-                case(contains(POI_CHOICES.fun, term)):
-                    possiblePOIS.fun = possiblePOIS.fun.concat(resultsArray);
+                case(contains(POI_CHOICES.amusements, term)):
+                    possiblePOIS.fun = possiblePOIS.amusements.concat(resultsArray);
                     break;
-                case(contains(POI_CHOICES.shop, term)):
-                    possiblePOIS.shop = possiblePOIS.shop.concat(resultsArray);
+                case(contains(POI_CHOICES.shopping, term)):
+                    possiblePOIS.shopping = possiblePOIS.shopping.concat(resultsArray);
                     break;
-                case(contains(POI_CHOICES.attraction, term)):
-                    possiblePOIS.attraction = possiblePOIS.attraction.concat(resultsArray);
+                case(contains(POI_CHOICES.attractions, term)):
+                    possiblePOIS.attraction = possiblePOIS.attractions.concat(resultsArray);
                     break;
                 case(contains(POI_CHOICES.culture, term)):
                     possiblePOIS.culture = possiblePOIS.culture.concat(resultsArray);
@@ -303,6 +323,7 @@
         findDestinations(primeTerm, primeDestination, dummy);
         //setTimeout(createFirst,11000);
         selectDestination(primeTerm, 1);
+
         console.log(terms);
         gatherDestinations();
     }
@@ -312,6 +333,7 @@
         //for each term in the pick set, find destinations for 
         //that term then create an itinerary as a callback when done
         for (var i = 0; i < terms.length; i++){
+            console.log(terms.length);
             if (i === (terms.length - 1)){
                 findDestinations(terms[i], primeDestination, createItinerary);
             }
@@ -348,6 +370,7 @@
               }
             });
         }
+
         setTimeout(function(){
             waypnts.pop();
             calculateAndDisplayRoute(directionsService, directionsDisplay, mapCenter, lastDestination, waypnts);
