@@ -31,25 +31,25 @@
     var SELECTIONS = { //constant representing the possible categories to select and the types in them
         "nature": ["park"],
         "food": ["bakery","café","meal_takeaway","restaurant"],
-        "fun": ["amusement_park","bowling_alley","movie_theater"],
-        "shop": ["clothing_store","department_store","shoe_store","shopping_mall"],
-        "attraction": ["aquarium","zoo","casino"],  //available in settings
-        //"drinks": ["bar","liquor_store","night_club"], //comment out until we get a way to verify age
+        "amusements": ["amusement_park","bowling_alley","movie_theater"],
+        "shopping": ["clothing_store","department_store","shoe_store","shopping_mall"],
+        "attractions": ["aquarium","zoo","casino"],  //available in settings
+        "nightlife": ["night_club", "bar", "liqour_store"], //comment out until we get a way to verify age
         "culture": ["art_gallery","library","museum","book_store"],  //available in settings
         "religion": ["synagogue","church","mosque","hindu_temple"],  //available in settings
-        //"self-care": ["hair_care","spa"]  //what do you guys think?
+        "self-care": ["hair_care","spa"]  //what do you guys think?
     }
-    var userPicks = ["nature", "food", "shop"]; //what the user would pick
+    var userPicks = ["nature", "food", "shopping"]; //what the user would pick
     var respHash = { //hash of array to hold places responses
         "nature": [],
         "food": [],
-        "fun": [],
-        "shop": [],
-        "attraction": [],  //available in settings
-        //"drinks": [], //comment out until we get a way to verify age
+        "amusements": [],
+        "shopping": [],
+        "attractions": [],  //available in settings
+        "nightlife": [], //comment out until we get a way to verify age
         "culture": [],  //available in settings
         "religion": [],  //available in settings
-        //"self-care: []  //what do you guys think?
+        "self-care": []  //what do you guys think?
     }
     var terms = [];
     //
@@ -65,7 +65,7 @@
     var storedData = localStorage.getItem("survey");
     var surveyData = JSON.parse(storedData);
     //set survey variables
-    var terms = surveyData.types;
+    var userPicks = surveyData.types;
     var tripLength = surveyData.tripLength;
     var dist = surveyData.distance;
     var loc = surveyData.location;
@@ -82,7 +82,8 @@
         directionsDisplay = new google.maps.DirectionsRenderer;
 
     }
-    $(document).on('click',"#searchTestBtn",function() {
+    //After clicking the plan weekend call the functions and build map
+    $(document).on('click',"#planWeekend",function() {
 
         //Reset search variables and itinerary
         $("#itineraryItems").empty();
@@ -90,21 +91,21 @@
         respHash = {
             "nature": [],
             "food": [],
-            "fun": [],
-            "shop": [],
-            "attraction": [],  //available in settings
-            //"drinks": [], //comment out until we get a way to verify age
+            "amusements": [],
+            "shopping": [],
+            "attractions": [],  //available in settings
+            "nightlife": [], //comment out until we get a way to verify age
             "culture": [],  //available in settings
             "religion": [],  //available in settings
-            //"self-care: []  //what do you guys think?
+            "self-care": []  //what do you guys think
         }
         //
         waypnts = [];
-
+        terms = []; //clear terms so that we have empty array to fill
         //Get the input zipcode and convert to lat/lng points for resetting map and search center
         directionsDisplay.setMap(map);
         geocoder = new google.maps.Geocoder();
-        codeAddress($("#searchTest").val(),gatherDestinations);
+        codeAddress(loc,gatherDestinations);
         setTimeout(createItinerary,1000);
         setTimeout(routeItinerary,2000);
 
@@ -163,8 +164,8 @@
                     case(contains(SELECTIONS.fun, term)):
                         respHash.fun = respHash.fun.concat(resultsArray);
                         break;
-                    case(contains(SELECTIONS.shop, term)):
-                        respHash.shop = respHash.shop.concat(resultsArray);
+                    case(contains(SELECTIONS.shopping, term)):
+                        respHash.shopping = respHash.shopping.concat(resultsArray);
                         break;
                     case(contains(SELECTIONS.attraction, term)):
                         respHash.attraction = respHash.attraction.concat(resultsArray);
