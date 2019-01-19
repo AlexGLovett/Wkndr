@@ -1,43 +1,26 @@
 body {
-    background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url("../images/survey.jpg");
+    background: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url("../images/survey.jpg");
     background-size: cover;
 }
 
-#card 
-{
-    position:absolute;
-    top: 40%;
+.container {
+    height: 100vh;
 }
 
-#select {
-    position:absolute;
-    top: 35%;
-    left: 25%;
+.card {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-#btn {
+#btn, #btn3 {
     opacity: .5;
-    position:absolute;
-    bottom: 30%;
-    left: 45%;
 }
 
 #btn2 {
-    opacity: .5;
-    position:absolute;
-    bottom: 25%;
-    left: 50%;
+    opacity: .9;
 }
 
-#btn3 {
-    opacity: .5;
-    position:absolute;
-    bottom: 25%;
-    left: 40%;
-}
-
-.horizon {
-    float: left;
+input:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
 }
 
 [type="checkbox"]+span:not(.lever) {
@@ -46,12 +29,8 @@ body {
 }
 
 /* label color */
-label {
-    color: white;
-}
-
-#grey {
-    color: grey;
+label, option, #grey {
+    color: rgb(216, 216, 216);
 }
 
 .input-field label {
@@ -97,13 +76,13 @@ input[type=text]:not(.browser-default):focus:not([readonly])+label {
 }
 
 input[type=range]::-webkit-slider-thumb {
-    background-color: black;
+    background-color: white;
   }
   input[type=range]::-moz-range-thumb {
-    background-color: black;
+    background-color: white;
   }
   input[type=range]::-ms-thumb {
-    background-color: black;
+    background-color: white;
   }
 
   /***** These are to edit the thumb and the text inside the thumb *****/
@@ -113,3 +92,7 @@ input[type=range]::-webkit-slider-thumb {
   input[type=range] + .thumb.active .value {
     color: black;
   }
+
+.dropdown-content li>a, .dropdown-content li>span {
+    color: black;
+}
