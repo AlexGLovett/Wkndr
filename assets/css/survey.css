@@ -1,10 +1,147 @@
+  /* Smart phone media quires  */
+  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+    body {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url("../images/survey.jpg");
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    #card {
+        position:absolute;
+        top: 40%;
+    }
+
+    #select {
+        position:absolute;
+        top: 25%;
+    }
+    
+    #btn {
+        opacity: .5;
+        position:absolute;
+        bottom: 30%;
+        left: 38%;
+    }
+    
+    #btn2 {
+        opacity: .5;
+        position:absolute;
+        bottom: 25%;
+        left: 50%;
+    }
+    
+    #btn3 {
+        opacity: .5;
+        position:absolute;
+        bottom: 25%;
+        left: 10%;
+    }
+    
+    /* Question 2 Drop-Down  */
+    .dropdown-content li>span {
+        color: black;
+        background-color: transparent;
+    }
+    
+    input {
+        text-indent: 41%;
+    }
+    
+    .horizon {
+        float: left;
+    }
+    
+    [type="checkbox"]+span:not(.lever) {
+        padding-left: 25px;
+        margin: 0px 30px 0px 0px;
+    }
+    
+    /* label color */
+    label {
+        color: white;
+    }
+    
+    #grey {
+        color: grey;
+    }
+    
+    .input-field label {
+        color: gray;
+    }
+    
+    /* Text color */
+    .input-field [type=text] {
+        color: white;
+    }  
+    
+    /* label underline focus color */ 
+    .input-field input[type=text]:focus {
+        border-bottom: 1px solid whitesmoke;
+        box-shadow: 0 1px 0 0 whitesmoke;
+    }
+    
+    input[type=text]:not(.browser-default):focus:not([readonly]) {
+        border-bottom: 1px solid white;
+        box-shadow: 0 1px 0 0 white;
+        color: white;
+    }
+    
+    input[type=text]:not(.browser-default):focus:not([readonly])+label {
+        color: grey;
+    }
+    
+    [type="checkbox"]:checked+span:not(.lever):before {
+        top: -4px;
+        left: -5px;
+        width: 12px;
+        height: 22px;
+        border-top: 2px solid transparent;
+        border-left: 2px solid transparent;
+        border-right: 2px solid white;
+        border-bottom: 2px solid white;
+        -webkit-transform: rotate(40deg);
+        transform: rotate(40deg);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        -webkit-transform-origin: 100% 100%;
+        transform-origin: 100% 100%;
+    }
+    
+    input[type=range]::-webkit-slider-thumb {
+        background-color: white;
+      }
+      input[type=range]::-moz-range-thumb {
+        background-color: white;
+      }
+      input[type=range]::-ms-thumb {
+        background-color: white;
+      }
+    
+      /***** These are to edit the thumb and the text inside the thumb *****/
+      input[type=range] + .thumb {
+        background-color: white;
+      }
+      input[type=range] + .thumb.active .value {
+        color: black;
+      }
+
+  }
+
+
+/* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- */
+
 body {
     background-image: linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4) ), url("../images/survey.jpg");
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
     background-size: cover;
 }
 
-#card 
-{
+#card {
     position:absolute;
     top: 40%;
 }
@@ -19,7 +156,16 @@ body {
     opacity: .5;
     position:absolute;
     bottom: 30%;
-    left: 45%;
+    left: 47%;
+}
+
+@media only screen  and (min-width : 1824px) {
+    #btn {
+        opacity: .5;
+        position:absolute;
+        bottom: 30%;
+        left: 50%;
+    }
 }
 
 #btn2 {
@@ -34,6 +180,23 @@ body {
     position:absolute;
     bottom: 25%;
     left: 40%;
+}
+
+/* Question 2 Drop-Down  */
+.dropdown-content li>span {
+    color: black;
+    background-color: transparent;
+}
+
+input {
+    text-indent: 270px;
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+    input {
+        text-indent: 50%;
+    }
 }
 
 .horizon {
@@ -97,13 +260,13 @@ input[type=text]:not(.browser-default):focus:not([readonly])+label {
 }
 
 input[type=range]::-webkit-slider-thumb {
-    background-color: black;
+    background-color: white;
   }
   input[type=range]::-moz-range-thumb {
-    background-color: black;
+    background-color: white;
   }
   input[type=range]::-ms-thumb {
-    background-color: black;
+    background-color: white;
   }
 
   /***** These are to edit the thumb and the text inside the thumb *****/
@@ -113,3 +276,5 @@ input[type=range]::-webkit-slider-thumb {
   input[type=range] + .thumb.active .value {
     color: black;
   }
+
+  
