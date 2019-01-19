@@ -2,6 +2,7 @@ body {
     display: flex;
     min-height: 100vh;
     flex-direction: column;
+    font-family: 'Noto Sans', sans-serif;
   }
 
 main {
@@ -11,10 +12,18 @@ main {
     z-index: 0;
 }
 
+input {
+  font-family: 'Noto Sans', sans-serif,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
+}
+
 nav {
     position: relative;
     box-shadow: 0 0 25px 0 #212121;
     z-index: 999;
+}
+
+h5 {
+  font-family: 'Raleway', sans-serif;
 }
 
 .sidenav-link > a {
