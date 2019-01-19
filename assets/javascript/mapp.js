@@ -141,6 +141,31 @@
         codeAddress(loc,selectPrimeDestination);
     });
 
+    $(document).on('click',"#planWeekend",function() {
+
+        var storedData = localStorage.getItem("survey");
+        var surveyData = JSON.parse(storedData);
+        //set survey variables
+        var terms = surveyData.types;
+        var tripLength = surveyData.tripLength;
+        var dist = surveyData.distance;
+        var loc = surveyData.location;
+        primeTerm = terms[0];
+
+        console.log("Initiating Map & Search");
+
+        //Reset map, search variables, and itinerary
+        resetSearch();
+
+        //Get the input zipcode and convert to lat/lng points for resetting map and search center
+        directionsDisplay.setMap(map);
+
+        geocoder = new google.maps.Geocoder();
+
+        //Find the input search address, display it on the map, and perform a Places search within the area as a callback function
+        codeAddress(loc,selectPrimeDestination);
+    });
+
     function codeAddress(location, callback) {
         var address = location;
         geocoder.geocode( { 'address': address}, function(results, status) {
