@@ -7,7 +7,6 @@ function createItinerary(){
     };
 
     setTimeout(routeItinerary, 2000);
-    
 }
 
 function selectDestination(searchTerm, itineraryItem){

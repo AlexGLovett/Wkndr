@@ -54,6 +54,18 @@
 */
 
     //Initialize the map object from which other api calls are made
+    /*
+    Retrieving from local storage
+    */
+    //get the data from local storage and parse to obj
+    var storedData = localStorage.getItem("survey");
+    var surveyData = JSON.parse(storedData);
+    //set survey variables
+    var terms = surveyData.types;
+    var tripLength = surveyData.tripLength;
+    var dist = surveyData.distance;
+    var loc = surveyData.location;
+
     function initMap() {
         
         //on map creation, center on Atlanta via lat-long coordinates
@@ -138,7 +150,6 @@
     }
 
     function dummy(){
-
     }
 
     function findDestinations(term, primeDestination, callBack){
@@ -202,8 +213,6 @@
         //After 1 second to complete the query, calls either createItinerary or the dummy function
         setTimeout(callBack,1000); 
     }
-
-
 
     //Post gathered itinerary items to the webpage
     function postEvent(destination, type, destinationNumber){
@@ -284,10 +293,6 @@
     }
 
     //Maps the first point so that the secondary points can be plotted in reference to it
-    function createFirst(){
-        
-    }
-
     function selectPrimeDestination(){
 
         //initialize the Places api service
@@ -296,6 +301,7 @@
         findDestinations(primeTerm, primeDestination, dummy);
         //setTimeout(createFirst,11000);
         selectDestination(primeTerm, 1);
+        console.log(terms);
         gatherDestinations();
     }
 
@@ -308,6 +314,7 @@
                 findDestinations(terms[i], primeDestination, createItinerary);
             }
             else{
+                console.log(terms[i]);
                 findDestinations(terms[i], primeDestination, dummy);
             }
         };
