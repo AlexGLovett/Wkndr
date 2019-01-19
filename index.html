@@ -13,241 +13,219 @@
     <link rel="stylesheet" type="text/css" href="assets/css/survey.css" />
 </head>
 <body>
+    <div class="container valign-wrapper">
+        <div class="row">
+            <div class="col s12">
+                <div class="card z-depth-0">
+                    <div class="card-content white-text">
+                        <div class="center-align" id="questionOne">
+                            <span class="card-title">What are your interests?</span>
 
-    <div class="row" id="questionOne">
-        <div class="col s12 center-align" id="select">
-            <div class="N/A transparent">
-            <div class="card-content white-text">
-                <div class="card-title center-align"><h5>What are your interests?</h5></div>
-                <br/>
-                <label id="grey">Choose as many as you like</label>
-                <br/>
-                <form action="#">
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input type="checkbox" name="types" value="nature" />
-                        <span>Nature</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input type="checkbox" name="types" value="amusement"/>
-                        <span>Amusement</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input type="checkbox" name="types" value="nightlife"/>
-                        <span>Nightlife</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input type="checkbox" name="types" value="self-care"/>
-                        <span>Self-care</span>
-                    </label>
-                    </div>
-                    </p>
-                    </p>    
-                    <div class="horizon">
-                    <label>
-                        <input type="checkbox" name="types" value="shopping"/>
-                        <span>Shopping</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input type="checkbox" name="types" value="culture"/>
-                        <span>Culture</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input type="checkbox" name="types" value="attractions"/>
-                        <span>Attractions</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input type="checkbox" name="types" value="food"/>
-                        <span>Food</span>
-                    </label>
-                    </div>
-                </form>
-            </div>
-            </div>
-        </div>
-    </div>
+                            <label id="grey">Choose as many as you like</label>
 
-    <div class="row" id="questionTwo">
-        <div class="col s12" id="select">
-            <div class="N/A transparent">
-            <div class="card-content white-text">
-                <div class="card-title center-align"><h5>How long will you be traveling?</h5></div>
-                <br/>
-                <br/>
+                            <br>
+                            <br>
 
-                <div class="input-field col s12">
-                        <select id="tripLength">
-                            <option value="" disabled selected>Choose</option>
-                            <option value="1">Half-Day</option>
-                            <option value="2">One Night</option>
-                            <option value="3">Two Nights</option>
-                        </select>
+                            <form>
+                                <div class="row">
+                                    <div class="col s12 m6 l3">
+                                        <label>
+                                            <input type="checkbox" name="types" value="nature" />
+                                            <span>Nature</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="col s12 m6 l3">
+                                        <label>
+                                            <input type="checkbox" name="types" value="food"/>
+                                            <span>Food</span>
+                                        </label>
+                                    </div>
 
-                    </div>
+                                    <div class="col s12 m6 l3">
+                                        <label>
+                                            <input type="checkbox" name="types" value="amusement"/>
+                                            <span>Amusement</span>
+                                        </label>
+                                    </div>
 
-                <!--<form action="#">
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input name="tripLength" type="checkbox" />
-                        <span>Half Day</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>                   
-                    </p>
-                    <div class="horizon">
-                    <label>
-                        <input name="tripLength" type="checkbox" />
-                        <span>One Night</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input name="tripLength" type="checkbox" />
-                        <span>Two Nights</span>
-                    </label>
-                    </div>
-                    </p>
-                </form> -->
-            </div>
-            </div>
-        </div>
-    </div>
+                                    <div class="col s12 m6 l3">
+                                        <label>
+                                            <input type="checkbox" name="types" value="shopping"/>
+                                            <span>Shopping</span>
+                                        </label>
+                                    </div>
+                                </div>
 
-    <!-- <div class="row" id="questionThree">
-        <div class="col s12 m6" id="select">
-            <div class="N/A transparent">
-            <div class="card-content white-text">
-                <div class="card-title center-align"><h5>How much money are you willing to spend?</h5></div>
-                <br/>
-                <label id="grey">Choose one</label>
-                <br/>
-                <form action="#">
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input name="group1" type="checkbox" />
-                        <span>$</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input name="group1" type="checkbox" />
-                        <span>$$</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input name="group1" type="checkbox" />
-                        <span>$$$</span>
-                    </label>
-                    </div>
-                    </p>
-                    <p>
-                    <div class="horizon">
-                    <label>
-                        <input name="group1" type="checkbox" />
-                        <span>$$$$</span>
-                    </label>
-                    </div>
-                    </p>
-                </form>
-            </div>
-            </div>
-        </div>
-    </div> -->
+                                <div class="row">
+                                    <div class="col s12 m6 l3">
+                                        <label>
+                                            <input type="checkbox" name="types" value="attractions"/>
+                                            <span>Attractions</span>
+                                        </label>
+                                    </div>
+                                    
+                                    <div class="col s12 m6 l3">
+                                        <label>
+                                            <input type="checkbox" name="types" value="nightlife"/>
+                                            <span>Nightlife</span>
+                                        </label>
+                                    </div>
 
-    <div class="row" id="questionFour">
-        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
-            <div class="N/A transparent">
-            <div class="card-content white-text center-align">
-                <span class="card-title"><h5>How far are you willing to travel?</h5></span>
-                <label id="grey">Miles</label>
-                <br/>
-                <br/>
-                <form action="#">
-                    <p class="range-field">
-                        <input type="range" id="distance" min="10" max="500" step="10" />
-                    </p>
-                </form>  
-            </div>
-            </div>
-        </div>
-    </div>
+                                    <div class="col s12 m6 l3">
+                                        <label>
+                                            <input type="checkbox" name="types" value="culture"/>
+                                            <span>Culture</span>
+                                        </label>
+                                    </div>
 
-    <div class="row" id="questionFive">
-        <div class="col s12 m6 center offset-l3 offset-m2" id="card">
-            <div class="N/A transparent">
-            <div class="card-content white-text center-align">
-                <span class="card-title"><h5>What is your zip code?</h5></span>
-                <div class="row">
-                    <form class="col s12"> <!-- text area for zip code -->
-                        <div class="row">
-                        <div class="input-field col s12"> 
-                            <input type="text" maxlength="5" class="numbers" id="location"/>
-                            <label for="textarea1">5-digit zip code</label>
+                                    <div class="col s12 m6 l3">
+                                        <label>
+                                            <input type="checkbox" name="types" value="self-care"/>
+                                            <span>Self-care</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
+    
+                        <div id="questionTwo">
+                            <span class="card-title">How long will you be traveling?</span>
+                    
+                            <div class="input-field">
+                                <select id="tripLength">
+                                    <option value="" disabled selected>Choose</option>
+                                    <option value="1">Half-Day</option>
+                                    <option value="2">One Night</option>
+                                    <option value="3">Two Nights</option>
+                                </select>
+                            </div>
+                        </div>    
+                    <!--<form action="#">
+                        <p>
+                        <div class="horizon">
+                        <label>
+                            <input name="tripLength" type="checkbox" />
+                            <span>Half Day</span>
+                        </label>
                         </div>
+                        </p>
+                        <p>                   
+                        </p>
+                        <div class="horizon">
+                        <label>
+                            <input name="tripLength" type="checkbox" />
+                            <span>One Night</span>
+                        </label>
+                        </div>
+                        </p>
+                        <p>
+                        <div class="horizon">
+                        <label>
+                            <input name="tripLength" type="checkbox" />
+                            <span>Two Nights</span>
+                        </label>
+                        </div>
+                        </p>
+                    </form> -->
+    
+        <!-- <div class="row" id="questionThree">
+            <div class="col s12 m6" id="select">
+                <div class="N/A transparent">
+                <div class="card-content white-text">
+                    <div class="card-title center-align"><h5>How much money are you willing to spend?</h5></div>
+                    <br/>
+                    <label id="grey">Choose one</label>
+                    <br/>
+                    <form action="#">
+                        <p>
+                        <div class="horizon">
+                        <label>
+                            <input name="group1" type="checkbox" />
+                            <span>$</span>
+                        </label>
+                        </div>
+                        </p>
+                        <p>
+                        <div class="horizon">
+                        <label>
+                            <input name="group1" type="checkbox" />
+                            <span>$$</span>
+                        </label>
+                        </div>
+                        </p>
+                        <p>
+                        <div class="horizon">
+                        <label>
+                            <input name="group1" type="checkbox" />
+                            <span>$$$</span>
+                        </label>
+                        </div>
+                        </p>
+                        <p>
+                        <div class="horizon">
+                        <label>
+                            <input name="group1" type="checkbox" />
+                            <span>$$$$</span>
+                        </label>
+                        </div>
+                        </p>
                     </form>
-                </div> 
+                </div>
+                </div>
             </div>
+        </div> -->
+                        <div id="questionFour">
+                            <span class="card-title">How far are you willing to travel?</span>
+
+                            <form>
+                                <label id="grey">Miles</label>
+                                <p class="range-field">
+                                    <input type="range" id="distance" min="10" max="500" step="10" />
+                                </p>
+                            </form>  
+                        </div>
+                        <div id="questionFive">
+                            <span class="card-title"><h5>What is your zip code?</h5></span>
+                            <form> <!-- text area for zip code -->
+                                <div class="input-field"> 
+                                        <label for="location">5-digit zip code</label>
+
+                                    <input type="text" maxlength="5" class="numbers" id="location"/>
+                                </div>
+                            </form>
+                        </div>
+                        
+                        <div class="center-align" id="msg">
+                            <div class="row">
+                                <div class="col s12">
+                                    <span class="card-title">WKNDR</span>
+                                    <h5>Thank you for that information. Click below to plan your weekend, or go back and change your answers.</h5>
+                                </div>
+                            </div>
+                        </div>                  
+
+                        <div class="row" id="btn">
+                            <div class="col s12 center-align">
+                                <button class="btn waves-effect black hoverable" type="submit" name="action">Submit</button>
+                            </div>
+                        </div>
+
+                        <div class="row" id="btn2">
+                            <div class="col s12 center-align">
+                                <a href="results.html"><button class="btn waves-effect light-green hoverable" type="submit" name="action">Plan Weekend</button></a>
+                            </div>
+                        </div>
+
+                        <div class="row" id="btn3">
+                            <div class="col s12 center-align">
+                                <button class="btn waves-effect black hoverable" type="submit" name="action">Restart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="row" id="msg">
-        <div class="col s12 m6" id="select">
-            <div class="N/A transparent">
-            <div class="card-content white-text">
-                <span class="card-title center-align">WKNDR</span>
-                <p><h4>Thank you for that information. Click below to plan your weekend, or go back and change your answers.</h4></p>
-            </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="col s10 offset-s1 center-align" id="btn">
-            <button class="btn waves-effect black hoverable" type="submit" name="action">Submit</button>
-    </div>
-
-    <div class="col s10 offset-s1 center-align" id="btn2">
-            <a href="results.html"><button class="btn waves-effect black hoverable" type="submit" name="action">Plan Weekend</button></a>
-    </div>
-
-    <div class="col s10 offset-s1 center-align" id="btn3">
-            <button class="btn waves-effect black hoverable" type="submit" name="action">Restart</button>
     </div>
 
     <!--jQuery CDN https://developers.google.com/speed/libraries/#jquery-->
