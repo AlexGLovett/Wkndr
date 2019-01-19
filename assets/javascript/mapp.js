@@ -134,7 +134,7 @@
         terms.forEach(function(term){
             var request = {
                 location: mapCenter,
-                radius: '40934', // 0.000621371 miles =  1 meter
+                radius: parseFloat(dist)/0.000621371, // 0.000621371 miles =  1 meter //converts to meters from miles
                 rating: '4',
                 type: [term],
                 fields: ['formatted_address', 'name', 'rating', 'opening_hours', 'geometry']
